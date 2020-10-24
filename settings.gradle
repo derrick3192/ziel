@@ -1,0 +1,4 @@
+rootProject.name = 'ziel'
+
+include "domain"
+include "dsl"
