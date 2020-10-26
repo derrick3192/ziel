@@ -1,7 +1,6 @@
 package com.oe.ziel.dsl
 
 import com.oe.ziel.dsl.booking.BookingDefinitionBuilder
-import com.oe.ziel.dsl.booking.ValidationSpec
 
 abstract class ServiceOfferingDefinition {
 

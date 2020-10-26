@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f05b249-a28b-4e92-b6d1-a43d67cba5ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/Main.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/constraints/Constraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/constraints/Constraint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/Main.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/Plan.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/Plan.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinition.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinition.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinition.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinition.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BookingDefinitionBuilder.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BookingDefinitionBuilder.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/Check.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/CheckSpec.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/ValidationSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/Validation.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

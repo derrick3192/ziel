@@ -52,17 +52,23 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
         max = 2
     }
 
+    /** Any input validation which may need to occur between the components**/
     def validation = booking.validation {
-        check {
-            label = "Check the shot craziness"
-            return sugar.selected && extraShots.selected >= 2 ? invalid("That coffee is too unhealthy. You cannot have Sugar & extra shots") : valid()
+
+        check("Check the shot to sugar craziness") {
+            return sugar.selected && extraShots.selected >= 2
         }
+
+        check("You can't have a large Almond") {
+            return ! (milk.selected == "Almond" && coffeeSize.selected == "LRG" )
+        }
+
     }
 
-    gantt {
+    def gantt = booking.gantt {
 
         // NOTE: (booking option).value is now known here
-        def coffee = coffeeSizes.find{it.label == coffeeSize.value}
+        def coffee = coffeeSizes.find{it.label == coffeeSize.selected}
 
         constraints {
             // all plans have an implicit

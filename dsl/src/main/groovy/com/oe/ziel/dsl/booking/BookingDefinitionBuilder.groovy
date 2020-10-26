@@ -4,10 +4,11 @@ class BookingDefinitionBuilder {
 
     List<BookingOption> bookingOptions = new ArrayList<>()
 
-    List<Check> checks = new ArrayList<>()
+    Validation validation = new Validation()
 
     protected <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
         cl.rehydrate(bookingOption, this, this)
+        cl.call()
         bookingOptions.add(bookingOption)
         return bookingOption
     }
@@ -24,8 +25,15 @@ class BookingDefinitionBuilder {
         return buildOption(cl, new IntOption())
     }
 
-    def validation(@DelegatesTo(value = ValidationSpec) Closure cl) {
+    Validation validation(@DelegatesTo(value = Validation) Closure cl) {
+        cl.rehydrate(validation, this, this)
+        cl.call()
+        return validation
+    }
+
+    def gantt(Closure cl) {
 
     }
+
 
 }
