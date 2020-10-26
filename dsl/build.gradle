@@ -12,10 +12,17 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+
+    id 'org.unbroken-dome.test-sets' version '3.0.1'
 }
 
+testSets {
+    example
+}
 
 dependencies {
     // Use the latest Groovy version for building this library
     implementation 'org.codehaus.groovy:groovy-all:2.5.10'
+
+    api project(":domain")
 }
