@@ -4,7 +4,7 @@ import com.oe.ziel.dsl.booking.BookingDefinitionBuilder
 
 abstract class ServiceOfferingDefinition {
 
-    protected BookingDefinitionBuilder booking = new BookingDefinitionBuilder()
+    protected BookingDefinitionBuilder builder = new BookingDefinitionBuilder()
 
     /**
      * Name of the service offering

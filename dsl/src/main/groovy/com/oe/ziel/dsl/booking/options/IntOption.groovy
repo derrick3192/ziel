@@ -1,4 +1,4 @@
-package com.oe.ziel.dsl.booking
+package com.oe.ziel.dsl.booking.options
 
 class IntOption extends BookingOption<Integer> {
 

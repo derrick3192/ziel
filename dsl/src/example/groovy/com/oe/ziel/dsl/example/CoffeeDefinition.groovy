@@ -1,9 +1,10 @@
 package com.oe.ziel.dsl.example
 
 import com.oe.ziel.dsl.ServiceOfferingDefinition
-import com.oe.ziel.dsl.booking.BoolOption
-import com.oe.ziel.dsl.booking.IntOption
-import com.oe.ziel.dsl.booking.OptionList
+import com.oe.ziel.dsl.booking.Booking
+import com.oe.ziel.dsl.booking.options.BoolOption
+import com.oe.ziel.dsl.booking.options.IntOption
+import com.oe.ziel.dsl.booking.options.OptionList
 
 class CoffeeDefinition extends ServiceOfferingDefinition {
 
@@ -21,7 +22,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
     /**
      * Booking Options
      */
-    OptionList coffeeSize = booking.optionList {
+    OptionList coffeeSize = builder.optionList {
         label = "Coffe Size"
         description = "What size of coffee you would like"
         options = coffeeSizes.collect{it.label}
@@ -29,7 +30,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
         required = true
     }
 
-    OptionList milk = booking.optionList {
+    OptionList milk = builder.optionList {
         label = "Milk"
         description = "The kind of Milk you would like"
         options = milkOptions
@@ -37,14 +38,14 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
         required = false
     }
 
-    BoolOption sugar = booking.boolOption {
+    BoolOption sugar = builder.boolOption {
         label = "Sugar?"
         description = "If you want the white tasty sugar in your drink or not"
         selected = false
         required = false
     }
 
-    IntOption extraShots = booking.intOption {
+    IntOption extraShots = builder.intOption {
         label = "Extra Shots?"
         description = "If you would like any extra shots with your coffee?"
         selected = 0
@@ -53,7 +54,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
     }
 
     /** Any input validation which may need to occur between the components**/
-    def validation = booking.validation {
+    def validation = builder.validation {
 
         check("Check the shot to sugar craziness") {
             return sugar.selected && extraShots.selected >= 2
@@ -65,11 +66,14 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
 
     }
 
-    def gantt = booking.gantt {
+    def gantt = builder.gantt { Booking booking ->
+
+
 
         // NOTE: (booking option).value is now known here
         def coffee = coffeeSizes.find{it.label == coffeeSize.selected}
 
+        // any constraints here will be added to all task allocation decisions (including resource decisions & starting times)
         constraints {
             // all plans have an implicit
             minStartTime(booking.createdAt)
@@ -83,7 +87,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
             description = "Boiling the water is the process of heating the water to 100 degrees"
             amount = 10
             constraints {
-                minStartTime = booking.createdAt
+                minStartTime = builder.createdAt
             }
         }
 
@@ -94,7 +98,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
 
         def grindBeans = work {
             name = "Grind Coffee Beans"
-            amount = extraShots.of(booking) + coffee.shots
+            amount = extraShots.of(builder) + coffee.shots
         }
 
         def brewCoffee = work {
