@@ -6,12 +6,6 @@
       <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinition.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinition.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinition.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinition.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BookingDefinitionBuilder.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BookingDefinitionBuilder.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BookingOption.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/options/BookingOption.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/BoolOption.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/options/BoolOption.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/IntOption.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/options/IntOption.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/OptionList.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/options/OptionList.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/Validation.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/validation/Validation.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/Validator.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/validation/Validator.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
