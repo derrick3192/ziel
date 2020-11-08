@@ -1,4 +1,4 @@
-package com.oe.ziel.domain;
+package com.oe.ziel.domain.work;
 
 public class Skill {
 

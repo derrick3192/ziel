@@ -2,3 +2,4 @@ rootProject.name = 'ziel'
 
 include "domain"
 include "dsl"
+include "api-builder"

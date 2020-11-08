@@ -1,11 +1,11 @@
 package com.oe.ziel.dsl
 
-import com.oe.ziel.dsl.booking.BookingDefinitionBuilder
+
 import com.oe.ziel.dsl.booking.gantt.Gantt
-import com.oe.ziel.dsl.booking.options.BookingOption
-import com.oe.ziel.dsl.booking.options.BoolOption
-import com.oe.ziel.dsl.booking.options.IntOption
-import com.oe.ziel.dsl.booking.options.OptionList
+import com.oe.ziel.domain.booking.options.BookingOption
+import com.oe.ziel.domain.booking.options.BoolOption
+import com.oe.ziel.domain.booking.options.IntOption
+import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.dsl.booking.validation.Validation
 
 abstract class ServiceOfferingDefinition {

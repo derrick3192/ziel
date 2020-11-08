@@ -7,12 +7,8 @@
  */
 
 plugins {
-    // Apply the groovy plugin to add support for Groovy
     id 'groovy'
-
-    // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
-
     id 'org.unbroken-dome.test-sets' version '3.0.1'
 }
 
@@ -21,8 +17,10 @@ testSets {
 }
 
 dependencies {
-    // Use the latest Groovy version for building this library
-    implementation 'org.codehaus.groovy:groovy-all:2.5.10'
 
     api project(":domain")
+
+    implementation 'org.codehaus.groovy:groovy-all'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 }

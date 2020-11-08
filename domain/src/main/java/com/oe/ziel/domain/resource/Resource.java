@@ -1,4 +1,6 @@
-package com.oe.ziel.domain;
+package com.oe.ziel.domain.resource;
+
+import com.oe.ziel.domain.work.Skill;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl
 
-import com.oe.ziel.domain.Work
+import com.oe.ziel.domain.work.Work
 
 class Plan {
 

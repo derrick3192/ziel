@@ -1,10 +1,10 @@
 package com.oe.ziel.dsl.example
 
+import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.dsl.ServiceOfferingDefinition
-import com.oe.ziel.dsl.booking.Booking
-import com.oe.ziel.dsl.booking.options.BoolOption
-import com.oe.ziel.dsl.booking.options.IntOption
-import com.oe.ziel.dsl.booking.options.OptionList
+import com.oe.ziel.domain.booking.options.BoolOption
+import com.oe.ziel.domain.booking.options.IntOption
+import com.oe.ziel.domain.booking.options.OptionList
 
 class CoffeeDefinition extends ServiceOfferingDefinition {
 

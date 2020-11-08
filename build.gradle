@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "java-library"
 }
 
 /*
@@ -12,7 +13,7 @@ plugins {
 
 subprojects {
 
-    apply plugin:'java'
+    apply plugin: 'java'
 
     repositories {
         mavenLocal()
@@ -22,7 +23,20 @@ subprojects {
 
 
     dependencies {
+
+        // COMMON DEPENDENCIES HERE
+        implementation 'org.apache.commons:commons-math3:3.6.1'
+        implementation 'joda-time:joda-time:2.10.7'
         testImplementation 'org.testng:testng:7.0.0'
+
+        constraints {
+
+            // DECLARE DEPENDENCIES HERE
+            implementation 'joda-time:joda-time:2.10.7'
+            implementation 'org.codehaus.groovy:groovy-all:2.5.10'
+            implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.3'
+            implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+        }
     }
 
 }

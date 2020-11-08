@@ -1,11 +1,12 @@
 package com.oe.ziel.domain.constraints;
 
-import com.oe.ziel.domain.Work;
+import com.oe.ziel.domain.work.Work;
 
-public interface UnaryWorkConstraint extends Constraint {
+public abstract class UnaryWorkConstraint extends Constraint {
 
-    Work getWork();
+    private final Work work;
 
-    void setWork(Work work);
-
+    public UnaryWorkConstraint(Work work) {
+        this.work = work;
+    }
 }

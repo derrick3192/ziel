@@ -3,12 +3,24 @@ package com.oe.ziel.domain.constraints;
 /**
  * Represents a constraint
  */
-public interface Constraint {
+public abstract class Constraint {
 
-    int calculateScore();
 
-    int getWeight();
+    /** If the constraint is valid */
+    public boolean isValid() {
+        return calculateScore() > 0;
+    }
 
-    int setWeight(int weight);
+    /** Calculate the score of the constraint */
+    abstract int calculateScore();
 
+    private int weight;
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }

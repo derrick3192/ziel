@@ -1,0 +1,13 @@
+
+plugins {
+    id 'groovy'
+    id 'java-library'
+}
+
+dependencies {
+    api project(":domain")
+
+    implementation 'org.codehaus.groovy:groovy-all'
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.11.3'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
+}
