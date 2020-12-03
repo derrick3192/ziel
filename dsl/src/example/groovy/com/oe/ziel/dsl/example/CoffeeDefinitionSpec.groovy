@@ -1,12 +1,16 @@
 package com.oe.ziel.dsl.example
 
-import com.oe.ziel.domain.booking.Booking
-import com.oe.ziel.dsl.ServiceOfferingDefinition
+import com.oe.ziel.dsl.ServiceOfferingDefinitionSpec
 import com.oe.ziel.domain.booking.options.BoolOption
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
+import groovy.transform.CompileStatic
+import org.joda.time.Hours
+import org.joda.time.Minutes
 
-class CoffeeDefinition extends ServiceOfferingDefinition {
+
+@CompileStatic
+class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
 
     /** Constants **/
 
@@ -17,7 +21,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
             new CoffeeConfig(10, "LRG", 3)
     ]
 
-    CoffeeDefinition() {
+    CoffeeDefinitionSpec() {
 
         // constants needed for the service offering
         name = "Coffee"
@@ -27,7 +31,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
 
 
         OptionList coffeeSize = optionList {
-            label = "Coffe Size"
+            label = "Coffee Size"
             description = "What size of coffee you would like"
             options = coffeeSizes.collect{it.label}
             selected = "MEDIUM"
@@ -71,28 +75,31 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
         }
 
         def gantt = gantt {
-            Booking booking ->
 
-
+            String customerDisplayName = booking.customer.getDisplayName()
 
             // NOTE: (booking option).value is now known here
             def coffee = coffeeSizes.find{it.label == coffeeSize.selected}
 
-            // any constraints here will be added to all task allocation decisions (including resource decisions & starting times)
-            constraints {
-                // all plans have an implicit
-                minStartTime(booking.createdAt)
-
-                // constraint for all tasks
-                license("BARISTER", 1)
+            resource {
+                license("hr", 1, 2, 3)
+                license("ohs", 1, 2, 3)
+                same = true
             }
 
             def boilWater = work {
+
                 name = "Boil Water"
                 description = "Boiling the water is the process of heating the water to 100 degrees"
                 amount = 10
-                constraints {
-                    minStartTime = builder.createdAt
+
+                maxStartTime = booking.createdAt + Minutes.minutes(20).toStandardDuration()
+                maxFinishTime = booking.createdAt + Hours.hours(1).toStandardDuration()
+
+                resource {
+                    license("barista")
+                    constraint(3) { age > 20 && age < 30}
+                    constraint { age == 22}
                 }
             }
 
@@ -103,7 +110,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
 
             def grindBeans = work {
                 name = "Grind Coffee Beans"
-                amount = extraShots.of(builder) + coffee.shots
+                amount = extraShots.selected + coffee.shots
             }
 
             def brewCoffee = work {
@@ -116,17 +123,14 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
                 dependsOn brewCoffee, brewCoffee
             }
 
-            // example of a task which may or may not need to be done based on the booking
-            // _if must also return a clours
             def addSugar = work {
                 name = "Add Sugar"
                 amount = 1
                 dependsOn combine
-                iff = {booking -> extraShots > 0}
+                _if = {sugar.selected}
             }
 
             def giveCoffee = work {
-                dependsOnAllOtherTasks = true // will be the last task completed
                 name = "Give Coffee to Customer"
                 dependsOnAllOtherTasks = true // will be the last task completed
                 after addSugar
@@ -135,8 +139,7 @@ class CoffeeDefinition extends ServiceOfferingDefinition {
             constraints {
                 // constraints which involve more than one task
                 tasksMustStartAtSameTime(boilWater, frothMilk, grindBeans)
-                //tasksMustBeDoneByTheSameResource(boilWater, give)
-                allTasksMustBeDoneByTheSameResource = true
+                tasksMustBeDoneByTheSameResource(boilWater, giveCoffee)
             }
 
         }

@@ -1,6 +1,6 @@
 package com.oe.ziel.domain.booking.options;
 
-class IntOption extends BookingOption<Integer> {
+public class IntOption extends BookingOption<Integer> {
 
     private int min;
     private int max;

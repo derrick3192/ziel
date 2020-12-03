@@ -47,4 +47,5 @@ public abstract class BookingOption<VALUE> {
     public void setRequired(boolean required) {
         this.required = required;
     }
+
 }

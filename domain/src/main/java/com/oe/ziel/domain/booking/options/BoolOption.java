@@ -1,6 +1,6 @@
 package com.oe.ziel.domain.booking.options;
 
-class BoolOption extends BookingOption<Boolean> {
+public class BoolOption extends BookingOption<Boolean> {
 
     protected String id;
 

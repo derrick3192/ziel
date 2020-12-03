@@ -2,7 +2,7 @@ package com.oe.ziel.domain.booking.options;
 
 import java.util.List;
 
-class OptionList extends BookingOption<String> {
+public class OptionList extends BookingOption<String> {
 
     private List<String> options;
 

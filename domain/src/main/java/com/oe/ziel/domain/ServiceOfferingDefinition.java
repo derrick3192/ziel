@@ -8,6 +8,7 @@ import com.oe.ziel.domain.work.Work;
 import java.util.ArrayList;
 import java.util.List;
 
+// consider using the word schema
 public abstract class ServiceOfferingDefinition {
 
 //    /**

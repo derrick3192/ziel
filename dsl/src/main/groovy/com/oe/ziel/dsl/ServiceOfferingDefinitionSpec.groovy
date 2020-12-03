@@ -1,14 +1,15 @@
 package com.oe.ziel.dsl
 
-
-import com.oe.ziel.dsl.booking.gantt.Gantt
+import com.oe.ziel.domain.ServiceOfferingDefinition
+import com.oe.ziel.domain.constraints.Constraint
+import com.oe.ziel.dsl.booking.gantt.GanttSpec
 import com.oe.ziel.domain.booking.options.BookingOption
 import com.oe.ziel.domain.booking.options.BoolOption
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.dsl.booking.validation.Validation
 
-abstract class ServiceOfferingDefinition {
+abstract class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
 
 
     /**
@@ -32,11 +33,15 @@ abstract class ServiceOfferingDefinition {
     boolean multiple
 
 
+    GanttSpec gantt = new GanttSpec()
+
 
     // booking options definitely needs to be a member in the builder
     List<BookingOption> bookingOptions = new ArrayList<>()
 
     //Validation validation = new Validation()
+
+    List<Constraint> constraints = new ArrayList<>()
 
     protected <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
         cl.rehydrate(bookingOption, this, this)
@@ -64,8 +69,8 @@ abstract class ServiceOfferingDefinition {
         return validation
     }
 
-    def gantt(@DelegatesTo(value = Gantt) Closure<Gantt> cl) {
-
+    def gantt(@DelegatesTo(value = GanttSpec) Closure cl) {
+        return new GanttSpec()
     }
 
 
