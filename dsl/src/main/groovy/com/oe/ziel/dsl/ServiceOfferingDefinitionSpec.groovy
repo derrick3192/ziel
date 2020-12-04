@@ -1,7 +1,10 @@
 package com.oe.ziel.dsl
 
 import com.oe.ziel.domain.ServiceOfferingDefinition
+import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.constraints.Constraint
+import com.oe.ziel.domain.user.User
+import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.booking.gantt.GanttSpec
 import com.oe.ziel.domain.booking.options.BookingOption
 import com.oe.ziel.domain.booking.options.BoolOption
@@ -9,7 +12,7 @@ import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.dsl.booking.validation.Validation
 
-abstract class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
+class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
 
 
     /**
@@ -31,6 +34,12 @@ abstract class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
      * Allow multiple orders of this in the same service offering
      */
     boolean multiple
+
+
+    /**
+     * The client ordering the service
+     */
+    User client
 
 
     GanttSpec gantt = new GanttSpec()
@@ -73,5 +82,15 @@ abstract class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
         return new GanttSpec()
     }
 
+    @Override
+    protected List<BookingOption> bookingOptions(User client) {
+        this.client = client
+        return bookingOptions
+    }
 
+    @Override
+    List<Work> work(Booking booking) {
+        gantt.ca
+        return null
+    }
 }

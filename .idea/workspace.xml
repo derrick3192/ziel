@@ -5,19 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/dfutschik.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/dfutschik.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/ServiceOfferingDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/ServiceOfferingDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/BookingOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/BookingOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/BoolOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/BoolOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/IntOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/IntOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/OptionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/booking/options/OptionList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Work.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Work.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeConfig.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeConfig.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinition.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/Main.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinition.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/ConstraintsSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/constraint/ConstraintsSpec.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/Gantt.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,24 +50,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dsl/src/example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/domain" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.oe.ziel.dsl" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dsl/src/example" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.oe.ziel.dsl" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/domain" />
+      <recent name="$PROJECT_DIR$/dsl" />
+      <recent name="$PROJECT_DIR$/dsl/src/example" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -151,10 +141,11 @@
     </state>
     <state x="880" y="354" width="811" height="669" key="#Project_Structure/0.23.2560.1332@0.23.2560.1332" timestamp="1603625204476" />
     <state x="880" y="354" key="#Project_Structure/0.25.2560.1325@0.25.2560.1325" timestamp="1607000979797" />
-    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser" timestamp="1605004245866">
-      <screen x="0" y="23" width="2560" height="1332" />
+    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser" timestamp="1607081165990">
+      <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1332@0.23.2560.1332" timestamp="1605004245866" />
+    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser/0.25.2560.1325@0.25.2560.1325" timestamp="1607081165990" />
     <state x="1046" y="555" width="467" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1603625778475">
       <screen x="0" y="23" width="2560" height="1332" />
     </state>

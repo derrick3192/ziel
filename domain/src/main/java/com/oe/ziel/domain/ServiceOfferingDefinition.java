@@ -28,7 +28,7 @@ public abstract class ServiceOfferingDefinition {
      * @param user
      * @return
      */
-    abstract List<BookingOption> bookingOptions(User user);
+    protected abstract List<BookingOption> bookingOptions(User client);
 
 
     /**
@@ -36,7 +36,7 @@ public abstract class ServiceOfferingDefinition {
      * @param booking
      * @return
      */
-    abstract List<Work> work(Booking booking);
+    public abstract List<Work> work(Booking booking);
 
 
 
