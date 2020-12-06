@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2f05b249-a28b-4e92-b6d1-a43d67cba5ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/dfutschik.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/dfutschik.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/ServiceOfferingDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/ServiceOfferingDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/constraints/WorkDependencyConstraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/constraints/WorkDependencyConstraint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/resource/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/resource/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/TaskAllocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/TaskAllocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Work.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Work.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinitionSpec.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/GanttSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/GanttSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +59,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/domain" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api-builder" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -67,6 +76,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api-builder" />
       <recent name="$PROJECT_DIR$/domain" />
       <recent name="$PROJECT_DIR$/dsl" />
       <recent name="$PROJECT_DIR$/dsl/src/example" />
@@ -136,20 +146,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="880" y="354" width="811" height="669" key="#Project_Structure" timestamp="1607000979797">
+    <state x="880" y="354" width="811" height="669" key="#Project_Structure" timestamp="1607227121868">
       <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="880" y="354" width="811" height="669" key="#Project_Structure/0.23.2560.1332@0.23.2560.1332" timestamp="1603625204476" />
-    <state x="880" y="354" key="#Project_Structure/0.25.2560.1325@0.25.2560.1325" timestamp="1607000979797" />
-    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser" timestamp="1607081165990">
+    <state x="880" y="354" key="#Project_Structure/0.25.2560.1325@0.25.2560.1325" timestamp="1607227121868" />
+    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser" timestamp="1607248615731">
       <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1332@0.23.2560.1332" timestamp="1605004245866" />
-    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser/0.25.2560.1325@0.25.2560.1325" timestamp="1607081165990" />
-    <state x="1046" y="555" width="467" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1603625778475">
-      <screen x="0" y="23" width="2560" height="1332" />
+    <state x="1093" y="380" key="#com.intellij.ide.util.MemberChooser/0.25.2560.1325@0.25.2560.1325" timestamp="1607248615731" />
+    <state x="1046" y="554" width="467" height="282" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1607227410831">
+      <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="1046" y="555" width="467" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.2560.1332@0.23.2560.1332" timestamp="1603625778475" />
+    <state x="1046" y="554" width="467" height="282" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.25.2560.1325@0.25.2560.1325" timestamp="1607227410831" />
     <state x="438" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604873113769">
       <screen x="0" y="23" width="2560" height="1332" />
     </state>
@@ -174,17 +185,19 @@
       <screen x="0" y="23" width="2560" height="1332" />
     </state>
     <state x="1010" y="428" width="540" height="524" key="StructurePopup/0.23.2560.1332@0.23.2560.1332" timestamp="1605007845922" />
-    <state x="1113" y="705" width="683" height="486" key="find.popup" timestamp="1605005725131">
-      <screen x="0" y="23" width="2560" height="1332" />
+    <state x="1113" y="703" width="683" height="486" key="find.popup" timestamp="1607233052957">
+      <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="1113" y="705" width="683" height="486" key="find.popup/0.23.2560.1332@0.23.2560.1332" timestamp="1605005725131" />
+    <state x="1113" y="703" width="683" height="486" key="find.popup/0.25.2560.1325@0.25.2560.1325" timestamp="1607233052957" />
     <state x="657" y="311" key="new project wizard" timestamp="1604813684579">
       <screen x="0" y="23" width="2560" height="1332" />
     </state>
     <state x="657" y="311" key="new project wizard/0.23.2560.1332@0.23.2560.1332" timestamp="1604813684579" />
-    <state x="945" y="327" width="670" height="676" key="search.everywhere.popup" timestamp="1605007078480">
-      <screen x="0" y="23" width="2560" height="1332" />
+    <state x="945" y="327" width="670" height="673" key="search.everywhere.popup" timestamp="1607248364424">
+      <screen x="0" y="25" width="2560" height="1325" />
     </state>
     <state x="945" y="327" width="670" height="676" key="search.everywhere.popup/0.23.2560.1332@0.23.2560.1332" timestamp="1605007078480" />
+    <state x="945" y="327" width="670" height="673" key="search.everywhere.popup/0.25.2560.1325@0.25.2560.1325" timestamp="1607248364424" />
   </component>
 </project>

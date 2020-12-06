@@ -30,51 +30,52 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
         multiple = true                                                             // whether you can order multiple of these in the same booking
 
 
-        OptionList coffeeSize = optionList {
-            label = "Coffee Size"
-            description = "What size of coffee you would like"
-            options = coffeeSizes.collect{it.label}
-            selected = "MEDIUM"
-            required = true
-        }
-
-        OptionList milk = optionList {
-            label = "Milk"
-            description = "The kind of Milk you would like"
-            options = milkOptions
-            selected = "Full Cream"
-            required = false
-        }
-
-        BoolOption sugar = boolOption {
-            label = "Sugar?"
-            description = "If you want the white tasty sugar in your drink or not"
-            selected = false
-            required = false
-        }
-
-        IntOption extraShots = intOption {
-            label = "Extra Shots?"
-            description = "If you would like any extra shots with your coffee?"
-            selected = 0
-            min = 0
-            max = 2
-        }
-
-        /** Any input validation which may need to occur between the components**/
-        def validation = validation {
-
-            check("Check the shot to sugar craziness") {
-                return sugar.selected && extraShots.selected >= 2
-            }
-
-            check("You can't have a large Almond") {
-                return ! (milk.selected == "Almond" && coffeeSize.selected == "LRG" )
-            }
-
-        }
-
         def gantt = gantt {
+
+            OptionList coffeeSize = optionList {
+                label = "Coffee Size"
+                description = "What size of coffee you would like"
+                options = coffeeSizes.collect{it.label}
+                selected = "MEDIUM"
+                required = true
+            }
+
+            OptionList milk = optionList {
+                label = "Milk"
+                description = "The kind of Milk you would like"
+                options = milkOptions
+                selected = "Full Cream"
+                required = false
+            }
+
+            BoolOption sugar = boolOption {
+                label = "Sugar?"
+                description = "If you want the white tasty sugar in your drink or not"
+                selected = false
+                required = false
+            }
+
+            IntOption extraShots = intOption {
+                label = "Extra Shots?"
+                description = "If you would like any extra shots with your coffee?"
+                selected = 0
+                min = 0
+                max = 2
+            }
+
+            /** Any input validation which may need to occur between the components**/
+            def validation = validation {
+
+                check("Check the shot to sugar craziness") {
+                    return sugar.selected && extraShots.selected >= 2
+                }
+
+                check("You can't have a large Almond") {
+                    return ! (milk.selected == "Almond" && coffeeSize.selected == "LRG" )
+                }
+
+            }
+
 
             String customerDisplayName = booking.customer.getDisplayName()
 

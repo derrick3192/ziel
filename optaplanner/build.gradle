@@ -1,0 +1,10 @@
+
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+dependencies {
+    api project(":domain")
+    implementation 'org.optaplanner:optaplanner-core:8.0.0.Final'
+}

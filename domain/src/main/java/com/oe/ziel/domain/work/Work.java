@@ -1,27 +1,60 @@
 package com.oe.ziel.domain.work;
 
+import org.joda.time.Duration;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Work {
 
-    private String name;
+    /**
+     * Label to help identify the work.
+     */
+    private String label;
 
-    private double amount;
+    /**
+     * The Standard Duration, that is how long it will take to complete the job with a speed factor of 1. (0.9 would mean a resource would only do 90% of the work in the same amount of time. 2.0 would be if a resource would complete twice the amount of work for the same amount of time.
+     */
+    private Duration amount;
 
-    private int priority;
+    /**
+     * The Standard Cost, that is the cost given a cost factor of 1, (1.1 would be a 10% increase).
+     */
+    private double cost = 1.0;
 
-    public String getName() {
-        return name;
+    /**
+     * The priority of the Job, that is if 2 jobs are of equal priority and can be done at the same time then the higher priority job should be done first.
+     */
+    private int priority = 0;
+
+    /**
+     * The required skills to complete the job.
+     */
+    private Map<String, Skill> requiredSkills = new HashMap<>();
+
+
+    public String getLabel() {
+        return label;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
-    public double getAmount() {
+    public Duration getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Duration amount) {
         this.amount = amount;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     public int getPriority() {
@@ -30,5 +63,13 @@ public class Work {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public Map<String, Skill> getRequiredSkills() {
+        return requiredSkills;
+    }
+
+    public void setRequiredSkills(Map<String, Skill> requiredSkills) {
+        this.requiredSkills = requiredSkills;
     }
 }

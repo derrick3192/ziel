@@ -29,7 +29,7 @@ public class WorkDependencyConstraint extends Constraint {
 
     @Override
     int calculateScore() {
-        Minutes.minutesBetween(secondary.getEndTime(), primary.getStartTime()).getMinutes();
+        return Minutes.minutesBetween(secondary.getEndTime(), primary.getStartTime()).getMinutes();
     }
 
 }

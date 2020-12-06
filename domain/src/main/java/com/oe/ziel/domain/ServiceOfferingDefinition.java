@@ -25,7 +25,7 @@ public abstract class ServiceOfferingDefinition {
 
     /**
      * Show the booking options for the user to make a selection from.
-     * @param user
+     * @param client
      * @return
      */
     protected abstract List<BookingOption> bookingOptions(User client);
