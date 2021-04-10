@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f05b249-a28b-4e92-b6d1-a43d67cba5ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/TaskAllocationSolution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/resource/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/resource/Resource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/TaskAllocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/oe/ziel/domain/work/TaskAllocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeConfig.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/coffee/CoffeeConfig.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinitionComposition.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/coffee/CoffeeDefinitionComposition.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/CoffeeDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/coffee/CoffeeDefinitionSpec.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/AllocationPlan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/OptaplannerSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/OptaplannerSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/PlanningEasyScoreCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/PlanningEasyScoreCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/ResourceConstraintConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/ResourceConstraintConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/TaskAllocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/TaskAllocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/ZielConstraintProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/main/java/com/oe/ziel/optaplanner/ZielConstraintProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/coffee/CoffeeDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/example/groovy/com/oe/ziel/dsl/example/coffee/CoffeeDefinitionSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/ServiceOfferingDefinitionSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/GanttSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/dsl/src/main/groovy/com/oe/ziel/dsl/booking/gantt/GanttSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optaplanner/src/test/java/com/oe/ziel/optaplanner/TestOptaplannerSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/optaplanner/src/test/java/com/oe/ziel/optaplanner/TestOptaplannerSolver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +76,20 @@
       <recent name="$PROJECT_DIR$/dsl/src/example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestOptaplannerSolver.testHelloWorld">
+  <component name="RunManager" selected="Application.CoffeeDemo">
+    <configuration name="CoffeeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.oe.ziel.dsl.example.coffee.CoffeeDemo" />
+      <module name="ziel.dsl.example" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.oe.ziel.dsl.example.coffee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.oe.ziel.dsl.example.Main" />
       <module name="ziel.dsl.example" />
@@ -148,6 +149,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CoffeeDemo" />
         <item itemvalue="Gradle.TestOptaplannerSolver.testHelloWorld" />
         <item itemvalue="Gradle.AppTest.application has a greeting" />
         <item itemvalue="Application.Main" />

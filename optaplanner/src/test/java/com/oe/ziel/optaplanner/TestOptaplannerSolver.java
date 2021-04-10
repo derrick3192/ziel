@@ -31,7 +31,7 @@ public class TestOptaplannerSolver {
 
         Booking booking = new Booking();
         booking.setCreatedAt(Instant.now());
-        booking.setServiceOfferingDefinition();
+//        booking.setServiceOfferingDefinition();
 //        solver.solve()
         System.out.println("hello");
     }
