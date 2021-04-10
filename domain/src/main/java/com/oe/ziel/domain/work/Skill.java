@@ -2,6 +2,12 @@ package com.oe.ziel.domain.work;
 
 public class Skill {
 
+    public Skill(){}
+
+    public Skill(String skillCode) {
+        this.skillCode = skillCode;
+    }
+
     /**
      * Unique Code for the string to identify the Skill
      */

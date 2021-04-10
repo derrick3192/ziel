@@ -3,12 +3,21 @@ package com.oe.ziel.domain.resource;
 import com.oe.ziel.domain.work.Skill;
 import com.oe.ziel.domain.work.Work;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Resource {
+
+    public Resource(Collection<Skill> skills) {
+        for (Skill skill : skills) {
+            this.skills.put(skill.getSkillCode(), skill);
+        }
+    }
+    public Resource(Skill... skills) {
+        for (Skill skill : skills) {
+            this.skills.put(skill.getSkillCode(), skill);
+        }
+    }
+
 
     private Set<String> tags = new HashSet<>();
     private Map<String, Skill> skills = new HashMap<>();

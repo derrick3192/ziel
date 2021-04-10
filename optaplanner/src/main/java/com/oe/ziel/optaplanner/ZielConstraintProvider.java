@@ -43,11 +43,7 @@ public abstract class ZielConstraintProvider implements ConstraintProvider {
                     TaskAllocation first = a1.getWork().getPriority() > a2.getWork().getPriority() ? a1 : a2;
                     TaskAllocation last  = a1.getWork().getPriority() < a2.getWork().getPriority() ? a1 : a2;
                     Duration lead = new Duration(first.getEndTime(), last.getEndTime());
-                    if (lead.getMillis() < 0) {
-                        return durationToScore(lead.abs());
-                    } else {
-                        return 0;
-                    }
+                    return lead.getMillis() < 0 ? durationToScore(lead.abs()) : 0;
                 });
     }
 

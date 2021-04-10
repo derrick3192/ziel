@@ -1,4 +1,4 @@
-package com.oe.ziel.dsl.example
+package com.oe.ziel.dsl.example.coffee
 
 import com.oe.ziel.dsl.ServiceOfferingDefinitionSpec
 import com.oe.ziel.domain.booking.options.BoolOption
@@ -9,6 +9,9 @@ import org.joda.time.Hours
 import org.joda.time.Minutes
 
 
+/**
+ * Provides a DSL example of a making coffee service
+ */
 @CompileStatic
 class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
 

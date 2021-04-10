@@ -12,6 +12,11 @@ public class TaskAllocation {
     protected Instant endTime;
     protected Resource resource;
     protected Work work;
+    protected Instant minStartTime;
+    protected Instant maxStarTime;
+
+    protected Instant minEndTime;
+    protected Instant maxEndTime;
 
     public Instant getStartTime() {
         return startTime;
@@ -58,4 +63,19 @@ public class TaskAllocation {
         return new Period(startTime, endTime).toStandardDuration();
     }
 
+    public Instant getMaxStarTime() {
+        return maxStarTime;
+    }
+
+    public void setMaxStarTime(Instant maxStarTime) {
+        this.maxStarTime = maxStarTime;
+    }
+
+    public Instant getMaxEndTime() {
+        return maxEndTime;
+    }
+
+    public void setMaxEndTime(Instant maxEndTime) {
+        this.maxEndTime = maxEndTime;
+    }
 }

@@ -1,4 +1,4 @@
-package com.oe.ziel.dsl.example
+package com.oe.ziel.dsl.example.coffee
 
 class CoffeeConfig {
 
