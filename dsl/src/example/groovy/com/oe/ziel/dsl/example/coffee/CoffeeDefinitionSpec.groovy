@@ -12,7 +12,6 @@ import org.joda.time.Minutes
 /**
  * Provides a DSL example of a making coffee service
  */
-@CompileStatic
 class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
 
     /** Constants **/
