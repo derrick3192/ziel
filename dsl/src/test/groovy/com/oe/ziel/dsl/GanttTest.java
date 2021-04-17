@@ -6,7 +6,7 @@ import com.oe.ziel.dsl.model.Gantt;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.oe.ziel.dsl.model.dsl.DiagramKeywords.*;
+import static com.oe.ziel.dsl.model.dsl.GanttKeywords.*;
 
 public class GanttTest {
 

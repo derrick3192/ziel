@@ -3,20 +3,20 @@ package com.oe.ziel.dsl.model.dsl;
 import com.oe.ziel.dsl.model.Type;
 
 public final class InheritanceBuilder implements HasGanttDefinition {
-    public InheritanceBuilder(GanttDefinition diagram, Type destination) {
+    public InheritanceBuilder(GanttDefinition gantt, Type destination) {
         this.source = destination;
-        this.diagram = diagram;
+        this.gantt = gantt;
     }
 
     public RelationshipDefinition type(String destination) {
-        return diagram.inheritance(source.getName(), destination);
+        return gantt.inheritance(source.getName(), destination);
     }
 
     @Override
     public GanttDefinition getGanttDefinition() {
-        return diagram;
+        return gantt;
     }
 
     private final Type source;
-    private final GanttDefinition diagram;
+    private final GanttDefinition gantt;
 }

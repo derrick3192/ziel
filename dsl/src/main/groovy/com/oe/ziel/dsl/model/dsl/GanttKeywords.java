@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.model.dsl;
 
-public class DiagramKeywords {
+public class GanttKeywords {
 
     public static final From from = From.FROM;
     public static final Integer zero = 0;

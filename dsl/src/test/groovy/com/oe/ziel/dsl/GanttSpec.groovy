@@ -9,7 +9,7 @@ import groovy.transform.CompileStatic
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static com.oe.ziel.dsl.model.dsl.DiagramKeywords.*
+import static com.oe.ziel.dsl.model.dsl.GanttKeywords.*
 
 class GanttSpec extends Specification {
 

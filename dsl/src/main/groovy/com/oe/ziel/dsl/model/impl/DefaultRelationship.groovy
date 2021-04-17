@@ -15,14 +15,14 @@ import groovy.transform.ToString
 @EqualsAndHashCode
 class DefaultRelationship implements Relationship, RelationshipDefinition {
 
-    private final DefaultGantt diagram
+    private final DefaultGantt gantt
 
     final DefaultType source
     final RelationshipType type
     final DefaultType destination
 
-    DefaultRelationship(DefaultGantt diagram, DefaultType source, RelationshipType type = RelationshipType.ASSOCIATION, DefaultType destination) {
-        this.diagram = diagram
+    DefaultRelationship(DefaultGantt gantt, DefaultType source, RelationshipType type = RelationshipType.ASSOCIATION, DefaultType destination) {
+        this.gantt = gantt
         this.source = source
         this.type = type
         this.destination = destination
@@ -61,6 +61,6 @@ class DefaultRelationship implements Relationship, RelationshipDefinition {
 
     @Override
     GanttDefinition getGanttDefinition() {
-        return diagram
+        return gantt
     }
 }
