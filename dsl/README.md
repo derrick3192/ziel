@@ -1,3 +1,3 @@
-# DSL
+## Goovy DSL
+https://musketyr.medium.com/groovy-dsl-builders-10-the-conclusion-9d2b961dbc55
 
-Groovy DSL for defining Service Offerings. This way complex processors and operations can be described in a high level programming language whilst still having the ability to use more powerful complex constructs in Java or Groovy.

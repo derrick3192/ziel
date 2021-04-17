@@ -1,6 +1,7 @@
 rootProject.name = 'ziel'
 
 include "domain"
-include "dsl"
+include "dsldeprecated"
 include "api-builder"
 include "optaplanner"
+include "dsl"
