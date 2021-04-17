@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.model.dsl;
 
-public interface TypeDefinition extends GanttContentDefinition, HasDiagramDefinition {
+public interface TypeDefinition extends GanttContentDefinition, HasGanttDefinition {
 
     String getName();
 

@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.model.dsl;
 
-public interface HasDiagramDefinition {
+public interface HasGanttDefinition {
 
     GanttDefinition getGanttDefinition();
 

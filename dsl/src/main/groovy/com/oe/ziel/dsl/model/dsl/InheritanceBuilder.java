@@ -2,7 +2,7 @@ package com.oe.ziel.dsl.model.dsl;
 
 import com.oe.ziel.dsl.model.Type;
 
-public final class InheritanceBuilder implements HasDiagramDefinition {
+public final class InheritanceBuilder implements HasGanttDefinition {
     public InheritanceBuilder(GanttDefinition diagram, Type destination) {
         this.source = destination;
         this.diagram = diagram;

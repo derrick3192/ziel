@@ -3,7 +3,7 @@ package com.oe.ziel.dsl.model.dsl;
 import com.oe.ziel.dsl.model.Type;
 import com.oe.ziel.dsl.model.RelationshipType;
 
-public final class AggregationOrCompositionBuilder implements HasDiagramDefinition {
+public final class AggregationOrCompositionBuilder implements HasGanttDefinition {
 
     public AggregationOrCompositionBuilder(GanttDefinition gantt, Type destination, RelationshipType relationshipType, String cardinality) {
         this.gantt = gantt;
