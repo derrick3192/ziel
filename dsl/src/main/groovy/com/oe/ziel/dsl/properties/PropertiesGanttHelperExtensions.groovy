@@ -4,7 +4,7 @@ import com.oe.ziel.dsl.model.dsl.TypeDefinition
 import groovy.transform.CompileStatic
 
 @CompileStatic
-class PropertiesDiagramHelperExtensions {
+class PropertiesGanttHelperExtensions {
 
     static TypeDefinition property(TypeDefinition typeDefinition, String type, String name) {
         typeDefinition.ganttDefinition.configure(PropertiesGanttHelper) { PropertiesGanttHelper helper ->

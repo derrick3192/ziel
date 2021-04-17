@@ -13,7 +13,7 @@ import space.jasan.support.groovy.closure.ConsumerWithDelegate;
 
 import java.util.Map;
 
-public class DiagramGroovyExtensions {
+public class GanttGroovyExtensions {
 
     private static final String CARDINALITY = "cardinality";
     private static final String TITLE = "title";

@@ -1,4 +1,4 @@
 moduleName=yuml-extra
 moduleVersion=0.1.0
-extensionClasses=com.oe.ziel.dsl.stereotype.StereotypeExtensions,com.oe.ziel.dsl.properties.PropertiesDiagramHelperExtensions,com.oe.ziel.dsl.model.dsl.groovy.DiagramGroovyExtensions
-staticExtensionClasses=com.oe.ziel.dsl.model.dsl.groovy.DiagramGroovyStaticExtensions
+extensionClasses=com.oe.ziel.dsl.stereotype.StereotypeExtensions,com.oe.ziel.dsl.properties.PropertiesGanttHelperExtensions,com.oe.ziel.dsl.model.dsl.groovy.GanttGroovyExtensions
+staticExtensionClasses=com.oe.ziel.dsl.model.dsl.groovy.GanttGroovyStaticExtensions
