@@ -13,13 +13,13 @@ public class GanttTest {
     private static final String EXPECTED_TEXT = "[note: You can stick notes on diagrams too!{bg:skyblue}]\n[Customer]<>1-orders 0..*>[Order]\n[Order]++*-*>[LineItem]\n[Order]-1>[DeliveryMethod]\n[Order]*-*>[Product]\n[Category]<->[Product]\n[DeliveryMethod]^[National]\n[DeliveryMethod]^[International]\n";
 
     @Test
-    public void testDiagramJava() {
+    public void testGanttJava() {
         GanttPrinter printer = new YumlGanttPrinter();
-        Gantt gantt = buildDiagram();
+        Gantt gantt = buildGantt();
         Assert.assertEquals(EXPECTED_TEXT, printer.print(gantt));
     }
 
-    private Gantt buildDiagram() {
+    private Gantt buildGantt() {
         return Gantt.create(d -> {
             d.note("You can stick notes on diagrams too!", "skyblue");
 

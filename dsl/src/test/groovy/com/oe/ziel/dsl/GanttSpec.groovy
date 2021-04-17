@@ -66,12 +66,12 @@ class GanttSpec extends Specification {
         where:
             title                           | diagram                                 | expected
             'orders'                        | buildOrderDiagram()                     | EXPECTED_DIAGRAM
-            'literal diagram'               | buildDiagramDiagramLiteral()            | EXPECTED_DIAGRAM_DIAGRAM
-            'literal diagram'               | buildDiagramDiagramGrouped()            | EXPECTED_DIAGRAM_DIAGRAM
-            'diagram with methods'          | buildDiagramDiagramUsingHelperMethods() | EXPECTED_DIAGRAM_DIAGRAM
-            'diagram with internal methods' | buildDiagramWithInternalMethodCalls()   | EXPECTED_DIAGRAM_DIAGRAM
-            'diagram with stereotypes'      | buildDiagramStereotypes()               | EXPECTED_DIAGRAM_STEROTYPES
-            'diagram with properties'       | buildDiagramProperties()                | EXPECTED_DIAGRAM_PROPERTIES
+            'literal diagram'               | buildGanttDiagramLiteral()            | EXPECTED_DIAGRAM_DIAGRAM
+            'literal diagram'               | buildGanttDiagramGrouped()            | EXPECTED_DIAGRAM_DIAGRAM
+            'diagram with methods'          | buildGanttDiagramUsingHelperMethods() | EXPECTED_DIAGRAM_DIAGRAM
+            'diagram with internal methods' | buildGanttWithInternalMethodCalls()   | EXPECTED_DIAGRAM_DIAGRAM
+            'diagram with stereotypes'      | buildGanttStereotypes()               | EXPECTED_DIAGRAM_STEROTYPES
+            'diagram with properties'       | buildGanttProperties()                | EXPECTED_DIAGRAM_PROPERTIES
     }
 
     @CompileStatic
@@ -108,7 +108,7 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramDiagramLiteral() {
+    private static Gantt buildGanttDiagramLiteral() {
         Gantt.build {
             note 'YUML Diagram Components'
 
@@ -124,7 +124,7 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramDiagramGrouped() {
+    private static Gantt buildGanttDiagramGrouped() {
         Gantt.build {
             note 'YUML Diagram Components'
 
@@ -144,17 +144,17 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramDiagramUsingHelperMethods() {
+    private static Gantt buildGanttDiagramUsingHelperMethods() {
         Gantt.build { GanttDefinition diagram ->
             note 'YUML Diagram Components'
 
-            buildDiagramRelationships(diagram)
+            buildGanttRelationships(diagram)
             buildRelationshipRelationship(diagram)
         }
     }
 
     @CompileStatic
-    private static GanttContentDefinition buildDiagramRelationships(GanttDefinition gantt) {
+    private static GanttContentDefinition buildGanttRelationships(GanttDefinition gantt) {
         gantt.with {
             type 'Diagram' has one to many type 'Type'
             type 'Diagram' has zero to many type 'Note'
@@ -172,7 +172,7 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramWithInternalMethodCalls() {
+    private static Gantt buildGanttWithInternalMethodCalls() {
         Gantt.build {
             note 'YUML Diagram Components'
 
@@ -192,7 +192,7 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramStereotypes() {
+    private static Gantt buildGanttStereotypes() {
         Gantt.build {
             note 'YUML Diagram Components'
 
@@ -208,7 +208,7 @@ class GanttSpec extends Specification {
     }
 
     @CompileStatic
-    private static Gantt buildDiagramProperties() {
+    private static Gantt buildGanttProperties() {
         Gantt.build {
             note 'YUML Diagram Components'
 
