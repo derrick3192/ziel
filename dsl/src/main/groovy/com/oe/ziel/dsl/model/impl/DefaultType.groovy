@@ -18,32 +18,32 @@ import groovy.transform.ToString
 @EqualsAndHashCode
 class DefaultType implements com.oe.ziel.dsl.model.Type, TypeDefinition {
 
-    private final DefaultGantt diagram
+    private final DefaultGantt gantt
 
     final String name
 
-    DefaultType(DefaultGantt diagram, String name) {
+    DefaultType(DefaultGantt gantt, String name) {
         this.name = name
-        this.diagram = diagram
+        this.gantt = gantt
     }
 
     @Override
     InheritanceBuilder inherits(From from) {
-        return new InheritanceBuilder(diagram, this)
+        return new InheritanceBuilder(gantt, this)
     }
 
     @Override
     AggregationOrCompositionBuilder has(Object sourceCardinality) {
-        return new AggregationOrCompositionBuilder(diagram, this, RelationshipType.AGGREGATION, sourceCardinality as String)
+        return new AggregationOrCompositionBuilder(gantt, this, RelationshipType.AGGREGATION, sourceCardinality as String)
     }
 
     @Override
     AggregationOrCompositionBuilder owns(Object sourceCardinality) {
-        return new AggregationOrCompositionBuilder(diagram, this, RelationshipType.COMPOSITION, sourceCardinality as String)
+        return new AggregationOrCompositionBuilder(gantt, this, RelationshipType.COMPOSITION, sourceCardinality as String)
     }
 
     @Override
     GanttDefinition getGanttDefinition() {
-        return diagram
+        return gantt
     }
 }
