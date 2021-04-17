@@ -5,27 +5,27 @@ import com.oe.ziel.dsl.model.RelationshipType;
 
 public final class AggregationOrCompositionBuilder implements HasDiagramDefinition {
 
-    public AggregationOrCompositionBuilder(DiagramDefinition diagram, Type destination, RelationshipType relationshipType, String cardinality) {
-        this.diagram = diagram;
+    public AggregationOrCompositionBuilder(GanttDefinition gantt, Type destination, RelationshipType relationshipType, String cardinality) {
+        this.gantt = gantt;
         this.destination = destination;
         this.relationshipType = relationshipType;
         this.cardinality = cardinality;
     }
 
     public AggregationOrCompositionBuilder to(Object upperBound) {
-        return new AggregationOrCompositionBuilder(diagram, destination, relationshipType, cardinality + ".." + upperBound);
+        return new AggregationOrCompositionBuilder(gantt, destination, relationshipType, cardinality + ".." + upperBound);
     }
 
     public RelationshipDefinition type(String aSource) {
-        return diagram.relationship(aSource, relationshipType, destination.getName()).source(cardinality);
+        return gantt.relationship(aSource, relationshipType, destination.getName()).source(cardinality);
     }
 
     @Override
-    public DiagramDefinition getDiagramDefinition() {
-        return diagram;
+    public GanttDefinition getGanttDefinition() {
+        return gantt;
     }
 
-    private final DiagramDefinition diagram;
+    private final GanttDefinition gantt;
     private final Type destination;
     private final RelationshipType relationshipType;
     private final String cardinality;

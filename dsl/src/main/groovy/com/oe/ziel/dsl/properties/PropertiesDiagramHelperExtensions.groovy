@@ -1,20 +1,20 @@
 package com.oe.ziel.dsl.properties
 
-
+import com.oe.ziel.dsl.model.dsl.TypeDefinition
 import groovy.transform.CompileStatic
 
 @CompileStatic
 class PropertiesDiagramHelperExtensions {
 
-    static com.oe.ziel.dsl.model.dsl.TypeDefinition property(com.oe.ziel.dsl.model.dsl.TypeDefinition typeDefinition, String type, String name) {
-        typeDefinition.diagramDefinition.configure(PropertiesDiagramHelper) { PropertiesDiagramHelper helper ->
+    static TypeDefinition property(TypeDefinition typeDefinition, String type, String name) {
+        typeDefinition.ganttDefinition.configure(PropertiesGanttHelper) { PropertiesGanttHelper helper ->
             helper.addProperty(typeDefinition.name, type, name)
         }
         return typeDefinition
     }
 
-    static com.oe.ziel.dsl.model.dsl.TypeDefinition property(com.oe.ziel.dsl.model.dsl.TypeDefinition typeDefinition, Map<String, String> properties) {
-        typeDefinition.diagramDefinition.configure(PropertiesDiagramHelper) { PropertiesDiagramHelper helper ->
+    static TypeDefinition property(TypeDefinition typeDefinition, Map<String, String> properties) {
+        typeDefinition.ganttDefinition.configure(PropertiesGanttHelper) { PropertiesGanttHelper helper ->
             helper.addProperties(typeDefinition.name, properties)
         }
         return typeDefinition

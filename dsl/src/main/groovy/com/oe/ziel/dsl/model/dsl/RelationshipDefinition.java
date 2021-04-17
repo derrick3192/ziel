@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.model.dsl;
 
-public interface RelationshipDefinition extends DiagramContentDefinition, HasDiagramDefinition {
+public interface RelationshipDefinition extends GanttContentDefinition, HasDiagramDefinition {
     RelationshipDefinition bidirectional(boolean bidirectional);
 
     default RelationshipDefinition source(String cardinality) {

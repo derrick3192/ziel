@@ -1,26 +1,26 @@
 package com.oe.ziel.dsl;
 
-import com.oe.ziel.dsl.export.DiagramPrinter;
-import com.oe.ziel.dsl.export.YumlDiagramPrinter;
-import com.oe.ziel.dsl.model.Diagram;
+import com.oe.ziel.dsl.export.GanttPrinter;
+import com.oe.ziel.dsl.export.YumlGanttPrinter;
+import com.oe.ziel.dsl.model.Gantt;
 import org.junit.Assert;
 import org.junit.Test;
 
 import static com.oe.ziel.dsl.model.dsl.DiagramKeywords.*;
 
-public class DiagramTest {
+public class GanttTest {
 
     private static final String EXPECTED_TEXT = "[note: You can stick notes on diagrams too!{bg:skyblue}]\n[Customer]<>1-orders 0..*>[Order]\n[Order]++*-*>[LineItem]\n[Order]-1>[DeliveryMethod]\n[Order]*-*>[Product]\n[Category]<->[Product]\n[DeliveryMethod]^[National]\n[DeliveryMethod]^[International]\n";
 
     @Test
     public void testDiagramJava() {
-        DiagramPrinter printer = new YumlDiagramPrinter();
-        Diagram diagram = buildDiagram();
-        Assert.assertEquals(EXPECTED_TEXT, printer.print(diagram));
+        GanttPrinter printer = new YumlGanttPrinter();
+        Gantt gantt = buildDiagram();
+        Assert.assertEquals(EXPECTED_TEXT, printer.print(gantt));
     }
 
-    private Diagram buildDiagram() {
-        return Diagram.create(d -> {
+    private Gantt buildDiagram() {
+        return Gantt.create(d -> {
             d.note("You can stick notes on diagrams too!", "skyblue");
 
             d.aggregation("Customer", "Order", r -> {

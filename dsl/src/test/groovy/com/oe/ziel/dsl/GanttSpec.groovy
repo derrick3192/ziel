@@ -1,17 +1,17 @@
 package com.oe.ziel.dsl
 
-import com.oe.ziel.dsl.export.DiagramPrinter
-import com.oe.ziel.dsl.export.YumlDiagramPrinter
-import com.oe.ziel.dsl.model.Diagram
-import com.oe.ziel.dsl.model.dsl.DiagramContentDefinition
-import com.oe.ziel.dsl.model.dsl.DiagramDefinition
+import com.oe.ziel.dsl.export.GanttPrinter
+import com.oe.ziel.dsl.export.YumlGanttPrinter
+import com.oe.ziel.dsl.model.Gantt
+import com.oe.ziel.dsl.model.dsl.GanttContentDefinition
+import com.oe.ziel.dsl.model.dsl.GanttDefinition
 import groovy.transform.CompileStatic
 import spock.lang.Specification
 import spock.lang.Unroll
 
 import static com.oe.ziel.dsl.model.dsl.DiagramKeywords.*
 
-class DiagramSpec extends Specification {
+class GanttSpec extends Specification {
 
     private static final String EXPECTED_DIAGRAM = '''
         [note: You can stick notes on diagrams too!{bg:skyblue}]
@@ -57,7 +57,7 @@ class DiagramSpec extends Specification {
     @Unroll
     void 'create #title diagram'() {
         given:
-            DiagramPrinter printer = new YumlDiagramPrinter()
+            GanttPrinter printer = new YumlGanttPrinter()
         expect:
             printer.print(diagram).trim() == expected
 
@@ -75,8 +75,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildOrderDiagram() {
-        Diagram.build {
+    private static Gantt buildOrderDiagram() {
+        Gantt.build {
             note('You can stick notes on diagrams too!', 'skyblue')
 
             aggregation('Customer', 'Order') {
@@ -108,8 +108,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramDiagramLiteral() {
-        Diagram.build {
+    private static Gantt buildDiagramDiagramLiteral() {
+        Gantt.build {
             note 'YUML Diagram Components'
 
             // diagram should have at least one type to be meaningful, rest is optional
@@ -124,8 +124,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramDiagramGrouped() {
-        Diagram.build {
+    private static Gantt buildDiagramDiagramGrouped() {
+        Gantt.build {
             note 'YUML Diagram Components'
 
             // diagram should have at least one type to be meaningful, rest is optional
@@ -144,8 +144,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramDiagramUsingHelperMethods() {
-        Diagram.build { DiagramDefinition diagram ->
+    private static Gantt buildDiagramDiagramUsingHelperMethods() {
+        Gantt.build { GanttDefinition diagram ->
             note 'YUML Diagram Components'
 
             buildDiagramRelationships(diagram)
@@ -154,8 +154,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static DiagramContentDefinition buildDiagramRelationships(DiagramDefinition diagram) {
-        diagram.with {
+    private static GanttContentDefinition buildDiagramRelationships(GanttDefinition gantt) {
+        gantt.with {
             type 'Diagram' has one to many type 'Type'
             type 'Diagram' has zero to many type 'Note'
             type 'Diagram' has zero to many type 'Relationship'
@@ -163,8 +163,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static DiagramContentDefinition buildRelationshipRelationship(DiagramDefinition diagram) {
-        diagram.with {
+    private static GanttContentDefinition buildRelationshipRelationship(GanttDefinition gantt) {
+        gantt.with {
             type 'Relationship' has one type 'Type' called 'source'
             type 'Relationship' has one type 'Type' called 'destination'
             type 'Relationship' owns one type 'RelationshipType'
@@ -172,8 +172,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramWithInternalMethodCalls() {
-        Diagram.build {
+    private static Gantt buildDiagramWithInternalMethodCalls() {
+        Gantt.build {
             note 'YUML Diagram Components'
 
             // diagram should have at least one type to be meaningful, rest is optional
@@ -192,8 +192,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramStereotypes() {
-        Diagram.build {
+    private static Gantt buildDiagramStereotypes() {
+        Gantt.build {
             note 'YUML Diagram Components'
 
             // diagram should have at least one stereotype to be meaningful, rest is optional
@@ -208,8 +208,8 @@ class DiagramSpec extends Specification {
     }
 
     @CompileStatic
-    private static Diagram buildDiagramProperties() {
-        Diagram.build {
+    private static Gantt buildDiagramProperties() {
+        Gantt.build {
             note 'YUML Diagram Components'
 
             // diagram should have at least one type to be meaningful, rest is optional

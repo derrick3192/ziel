@@ -3,7 +3,7 @@ package com.oe.ziel.dsl.model.dsl;
 import com.oe.ziel.dsl.model.Type;
 
 public final class InheritanceBuilder implements HasDiagramDefinition {
-    public InheritanceBuilder(DiagramDefinition diagram, Type destination) {
+    public InheritanceBuilder(GanttDefinition diagram, Type destination) {
         this.source = destination;
         this.diagram = diagram;
     }
@@ -13,10 +13,10 @@ public final class InheritanceBuilder implements HasDiagramDefinition {
     }
 
     @Override
-    public DiagramDefinition getDiagramDefinition() {
+    public GanttDefinition getGanttDefinition() {
         return diagram;
     }
 
     private final Type source;
-    private final DiagramDefinition diagram;
+    private final GanttDefinition diagram;
 }

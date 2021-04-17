@@ -3,7 +3,7 @@ package com.oe.ziel.dsl.model.impl
 
 import com.oe.ziel.dsl.model.RelationshipType
 import com.oe.ziel.dsl.model.dsl.AggregationOrCompositionBuilder
-import com.oe.ziel.dsl.model.dsl.DiagramDefinition
+import com.oe.ziel.dsl.model.dsl.GanttDefinition
 import com.oe.ziel.dsl.model.dsl.From
 import com.oe.ziel.dsl.model.dsl.InheritanceBuilder
 import com.oe.ziel.dsl.model.dsl.TypeDefinition
@@ -12,17 +12,17 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.PackageScope
 import groovy.transform.ToString
 
-@ToString(excludes = 'diagramDefinition')
+@ToString(excludes = 'ganttDefinition')
 @PackageScope
 @CompileStatic
 @EqualsAndHashCode
 class DefaultType implements com.oe.ziel.dsl.model.Type, TypeDefinition {
 
-    private final DefaultDiagram diagram
+    private final DefaultGantt diagram
 
     final String name
 
-    DefaultType(DefaultDiagram diagram, String name) {
+    DefaultType(DefaultGantt diagram, String name) {
         this.name = name
         this.diagram = diagram
     }
@@ -43,7 +43,7 @@ class DefaultType implements com.oe.ziel.dsl.model.Type, TypeDefinition {
     }
 
     @Override
-    DiagramDefinition getDiagramDefinition() {
+    GanttDefinition getGanttDefinition() {
         return diagram
     }
 }

@@ -2,26 +2,26 @@ package com.oe.ziel.dsl.model.impl
 
 import com.oe.ziel.dsl.model.Relationship
 import com.oe.ziel.dsl.model.RelationshipType
-import com.oe.ziel.dsl.model.dsl.DiagramDefinition
+import com.oe.ziel.dsl.model.dsl.GanttDefinition
 import com.oe.ziel.dsl.model.dsl.RelationshipDefinition
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.PackageScope
 import groovy.transform.ToString
 
-@ToString(excludes = 'diagramDefinition')
+@ToString(excludes = 'ganttDefinition')
 @PackageScope
 @CompileStatic
 @EqualsAndHashCode
 class DefaultRelationship implements Relationship, RelationshipDefinition {
 
-    private final DefaultDiagram diagram
+    private final DefaultGantt diagram
 
     final DefaultType source
     final RelationshipType type
     final DefaultType destination
 
-    DefaultRelationship(DefaultDiagram diagram, DefaultType source, RelationshipType type = RelationshipType.ASSOCIATION, DefaultType destination) {
+    DefaultRelationship(DefaultGantt diagram, DefaultType source, RelationshipType type = RelationshipType.ASSOCIATION, DefaultType destination) {
         this.diagram = diagram
         this.source = source
         this.type = type
@@ -60,7 +60,7 @@ class DefaultRelationship implements Relationship, RelationshipDefinition {
     }
 
     @Override
-    DiagramDefinition getDiagramDefinition() {
+    GanttDefinition getGanttDefinition() {
         return diagram
     }
 }

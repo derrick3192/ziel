@@ -1,11 +1,10 @@
 package com.oe.ziel.dsl.stereotype;
 
 import com.oe.ziel.dsl.model.dsl.*;
-import com.oe.ziel.dsl.model.dsl.*;
 
 public class StereotypeExtensions {
 
-    public static TypeDefinition stereotype(DiagramDefinition diagram, String name) {
+    public static TypeDefinition stereotype(GanttDefinition diagram, String name) {
         return diagram.type("<<" + name + ">>");
     }
 

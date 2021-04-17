@@ -1,8 +1,8 @@
 package com.oe.ziel.dsl.export;
 
 import com.oe.ziel.dsl.model.Type;
-import com.oe.ziel.dsl.properties.PropertiesDiagramHelper;
-import com.oe.ziel.dsl.model.Diagram;
+import com.oe.ziel.dsl.properties.PropertiesGanttHelper;
+import com.oe.ziel.dsl.model.Gantt;
 import com.oe.ziel.dsl.model.Note;
 import com.oe.ziel.dsl.model.Relationship;
 
@@ -14,34 +14,34 @@ import java.util.stream.Collectors;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
-public class YumlDiagramPrinter implements DiagramPrinter {
+public class YumlGanttPrinter implements GanttPrinter {
 
-    public String print(Diagram diagram) {
+    public String print(Gantt gantt) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
 
-        for (Note note : diagram.getNotes()) {
+        for (Note note : gantt.getNotes()) {
             printWriter.println(print(note));
         }
 
-        Map<String, Type> orphanTypes = diagram.getTypes().stream().collect(toMap(Type::getName, identity()));
+        Map<String, Type> orphanTypes = gantt.getTypes().stream().collect(toMap(Type::getName, identity()));
 
-        for (Relationship relationship : diagram.getRelationships()) {
+        for (Relationship relationship : gantt.getRelationships()) {
             orphanTypes.remove(relationship.getSource().getName());
             orphanTypes.remove(relationship.getDestination().getName());
 
-            printWriter.println(print(diagram, relationship));
+            printWriter.println(print(gantt, relationship));
         }
 
         for (Type type : orphanTypes.values()) {
-            printWriter.println(print(diagram, type));
+            printWriter.println(print(gantt, type));
         }
 
         return stringWriter.toString();
     }
 
-    private String print(Diagram diagram, Type type) {
-        Map<String, String> properties = PropertiesDiagramHelper.getProperties(diagram, type);
+    private String print(Gantt gantt, Type type) {
+        Map<String, String> properties = PropertiesGanttHelper.getProperties(gantt, type);
 
         if (properties.isEmpty()) {
             return String.format("[%s]", type.getName());
@@ -56,32 +56,32 @@ public class YumlDiagramPrinter implements DiagramPrinter {
         return String.format("[%s|%s]", type.getName(), propertiesFormatted);
     }
 
-    private String print(Diagram diagram, Relationship r) {
+    private String print(Gantt gantt, Relationship r) {
         switch (r.getType()) {
             case ASSOCIATION:
                 return String.format("%s%s%s-%s>%s",
-                    print(diagram, r.getSource()),
+                    print(gantt, r.getSource()),
                     r.isBidirectional() ? "<" : "",
                     cardinalityAndTitle(r.getSourceCardinality(), r.getSourceTitle()),
                     cardinalityAndTitle(r.getDestinationCardinality(), r.getDestinationTitle()),
-                    print(diagram, r.getDestination())
+                    print(gantt, r.getDestination())
                 );
             case AGGREGATION:
                 return String.format("%s<>%s-%s>%s",
-                    print(diagram, r.getSource()),
+                    print(gantt, r.getSource()),
                     cardinalityAndTitle(r.getSourceCardinality(), r.getSourceTitle()),
                     cardinalityAndTitle(r.getDestinationCardinality(), r.getDestinationTitle()),
-                    print(diagram, r.getDestination())
+                    print(gantt, r.getDestination())
                 );
             case COMPOSITION:
                 return String.format("%s++%s-%s>%s",
-                    print(diagram, r.getSource()),
+                    print(gantt, r.getSource()),
                     cardinalityAndTitle(r.getSourceCardinality(), r.getSourceTitle()),
                     cardinalityAndTitle(r.getDestinationCardinality(), r.getDestinationTitle()),
-                    print(diagram, r.getDestination())
+                    print(gantt, r.getDestination())
                 );
             case INHERITANCE:
-                return String.format("%s^%s", print(diagram, r.getDestination()), print(diagram, r.getSource()));
+                return String.format("%s^%s", print(gantt, r.getDestination()), print(gantt, r.getSource()));
         }
         throw new IllegalArgumentException("Unknown type of relationship: " + r.getType());
     }

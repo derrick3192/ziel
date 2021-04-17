@@ -1,11 +1,11 @@
 package com.oe.ziel.dsl.model.impl
 
 
-import com.oe.ziel.dsl.model.Diagram
+import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.Note
 import com.oe.ziel.dsl.model.RelationshipType
-import com.oe.ziel.dsl.model.dsl.DiagramDefinition
-import com.oe.ziel.dsl.model.dsl.DiagramHelper
+import com.oe.ziel.dsl.model.dsl.GanttDefinition
+import com.oe.ziel.dsl.model.dsl.GanttHelper
 import com.oe.ziel.dsl.model.dsl.RelationshipDefinition
 import com.oe.ziel.dsl.model.dsl.TypeDefinition
 import groovy.transform.CompileStatic
@@ -19,14 +19,14 @@ import java.util.function.Consumer
 @PackageScope
 @CompileStatic
 @EqualsAndHashCode
-class DefaultDiagram implements Diagram, DiagramDefinition {
+class DefaultGantt implements Gantt, GanttDefinition {
 
     final Collection<DefaultNote> notes = new LinkedHashSet<>()
     final Collection<DefaultRelationship> relationships = new LinkedHashSet<>()
     final Map<String, Object> metadata = new LinkedHashMap<>();
 
     private final Map<String, DefaultType> typesMap = [:].withDefault { key -> new DefaultType(this, key.toString()) }
-    private final Map<Class<? extends DiagramHelper>, DiagramHelper> helperMap = [:]
+    private final Map<Class<? extends GanttHelper>, GanttHelper> helperMap = [:]
 
     @Override
     Collection<? extends com.oe.ziel.dsl.model.Type> getTypes() {
@@ -64,14 +64,14 @@ class DefaultDiagram implements Diagram, DiagramDefinition {
     }
 
     @Override
-    public <H extends DiagramHelper> H configure(Class<H> helper, Consumer<H> configuration) {
+    public <H extends GanttHelper> H configure(Class<H> helper, Consumer<H> configuration) {
         H helperInstance = (H) helperMap.computeIfAbsent(helper, { helper.newInstance()})
         configuration.accept(helperInstance)
         return helperInstance
     }
 
     void postprocess() {
-        for (DiagramHelper helper : helperMap.values()) {
+        for (GanttHelper helper : helperMap.values()) {
             metadata.putAll(helper.metadata)
         }
     }

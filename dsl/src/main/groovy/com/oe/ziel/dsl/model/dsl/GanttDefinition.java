@@ -5,7 +5,7 @@ import com.oe.ziel.dsl.model.RelationshipType;
 
 import java.util.function.Consumer;
 
-public interface DiagramDefinition {
+public interface GanttDefinition {
 
     default Note note(String text) {
         return note(text, null);
@@ -84,11 +84,11 @@ public interface DiagramDefinition {
         Consumer<RelationshipDefinition> additionalProperties
     );
 
-    default <H extends DiagramHelper> H add(Class<H> helper) {
+    default <H extends GanttHelper> H add(Class<H> helper) {
         return configure(helper,  (h) -> {});
     }
 
-    <H extends DiagramHelper> H configure(Class<H> helper, Consumer<H> additionalProperties);
+    <H extends GanttHelper> H configure(Class<H> helper, Consumer<H> additionalProperties);
 
     void postprocess();
 
