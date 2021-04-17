@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.example.coffee
 
-import com.oe.ziel.dsl.ServiceOfferingDefinitionSpec
+import com.oe.ziel.dsl.ServiceOfferingDefinitionDSL
 import com.oe.ziel.domain.booking.options.BoolOption
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
@@ -12,7 +12,7 @@ import org.joda.time.Minutes
 /**
  * Provides a DSL example of a making coffee service
  */
-class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
+class CoffeeDefinition extends ServiceOfferingDefinitionDSL {
 
     /** Constants **/
 
@@ -23,7 +23,7 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
             new CoffeeConfig(10, "LRG", 3)
     ]
 
-    CoffeeDefinitionSpec() {
+    CoffeeDefinition() {
 
         // constants needed for the service offering
         name = "Coffee"
@@ -35,6 +35,7 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
         def gantt = gantt {
 
             OptionList coffeeSize = optionList {
+                id = "coffeeSize"
                 label = "Coffee Size"
                 description = "What size of coffee you would like"
                 options = coffeeSizes.collect{it.label}
@@ -43,6 +44,7 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
             }
 
             OptionList milk = optionList {
+                id = "milk"
                 label = "Milk"
                 description = "The kind of Milk you would like"
                 options = milkOptions
@@ -51,6 +53,7 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
             }
 
             BoolOption sugar = boolOption {
+                id = "sugar"
                 label = "Sugar?"
                 description = "If you want the white tasty sugar in your drink or not"
                 selected = false
@@ -58,11 +61,13 @@ class CoffeeDefinitionSpec extends ServiceOfferingDefinitionSpec {
             }
 
             IntOption extraShots = intOption {
+                id = "extraShots"
                 label = "Extra Shots?"
                 description = "If you would like any extra shots with your coffee?"
                 selected = 0
                 min = 0
                 max = 2
+                required = false
             }
 
             /** Any input validation which may need to occur between the components**/

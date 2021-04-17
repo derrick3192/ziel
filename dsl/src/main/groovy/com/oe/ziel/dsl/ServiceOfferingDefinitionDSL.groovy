@@ -7,12 +7,17 @@ import com.oe.ziel.domain.user.User
 import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.booking.gantt.GanttSpec
 import com.oe.ziel.domain.booking.options.BookingOption
-import com.oe.ziel.domain.booking.options.BoolOption
-import com.oe.ziel.domain.booking.options.IntOption
-import com.oe.ziel.domain.booking.options.OptionList
-import com.oe.ziel.dsl.booking.validation.Validation
+import groovy.transform.stc.ClosureParams
+import groovy.transform.stc.SimpleType
 
-class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
+
+abstract class ServiceOfferingDefinitionDSL implements ServiceOfferingDefinition {
+
+    protected ServiceOfferingDefinitionDSL() {
+        ganttSpec = ganttSpec()
+    }
+
+    protected GanttSpec ganttSpec
 
 
     /**
@@ -44,22 +49,18 @@ class ServiceOfferingDefinitionSpec extends ServiceOfferingDefinition {
 
     GanttSpec gantt = new GanttSpec()
 
-
-
-
-    //Validation validation = new Validation()
-
+    
     List<Constraint> constraints = new ArrayList<>()
 
 
     def gantt(@DelegatesTo(value = GanttSpec) Closure cl) {
-
-        return new GanttSpec()
+        cl.rehydrate(gantt, this, this)
+        cl.call()
     }
 
     @Override
-    protected List<BookingOption> bookingOptions(User client) {
-        this.client = client
+    List<BookingOption> bookingOptions() {
+        return gantt.bookingOptions
     }
 
     @Override

@@ -10,6 +10,9 @@ import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.booking.gantt.constraint.ConstraintsSpec
 import com.oe.ziel.dsl.booking.validation.Validation
 import groovy.transform.CompileStatic
+import groovy.transform.stc.ClosureParams
+import groovy.transform.stc.FirstParam
+import groovy.transform.stc.SimpleType
 
 @CompileStatic
 class GanttSpec extends WorkSpec {
@@ -76,5 +79,7 @@ class GanttSpec extends WorkSpec {
         return null
     }
 
-    List<Work> work(Booking booking) {}
+    List<Work> work(Booking booking) {
+        return works
+    }
 }
