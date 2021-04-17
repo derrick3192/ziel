@@ -5,13 +5,13 @@ import com.oe.ziel.dsl.model.dsl.GanttDefinition;
 
 import java.util.function.Consumer;
 
-public class DefaultDiagramFactory {
+public class DefaultGanttFactory {
 
     public static Gantt build(Consumer<GanttDefinition> definition) {
-        DefaultGantt diagram = new DefaultGantt();
-        definition.accept(diagram);
-        diagram.postprocess();
-        return diagram;
+        DefaultGantt gantt = new DefaultGantt();
+        definition.accept(gantt);
+        gantt.postprocess();
+        return gantt;
     }
 
 }
