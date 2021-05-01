@@ -1,6 +1,6 @@
 package com.oe.ziel.dsldeprecated
 
-import com.oe.ziel.domain.ServiceOfferingDefinition
+import com.oe.ziel.domain.booking.ServiceOfferingDefinition
 import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.constraints.Constraint
 import com.oe.ziel.domain.user.User
@@ -55,12 +55,12 @@ abstract class ServiceOfferingDefinitionDSL implements ServiceOfferingDefinition
         cl.call()
     }
 
-    @Override
+
     List<BookingOption> bookingOptions() {
         return gantt.bookingOptions
     }
 
-    @Override
+
     List<Work> work(Booking booking) {
         return gantt.work(booking)
     }

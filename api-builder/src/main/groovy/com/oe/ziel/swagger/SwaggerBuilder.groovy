@@ -1,6 +1,6 @@
 package com.oe.ziel.swagger
 
-import com.oe.ziel.domain.ServiceOfferingDefinition
+import com.oe.ziel.domain.booking.ServiceOfferingDefinition
 
 class SwaggerBuilder {
 

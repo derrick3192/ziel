@@ -1,10 +1,11 @@
 package com.oe.ziel.domain.booking;
 
-import com.oe.ziel.domain.ServiceOfferingDefinition;
 import com.oe.ziel.domain.user.User;
 import org.joda.time.Instant;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,24 +19,25 @@ public class Booking {
     private Instant createdAt;
 
     /**
+     *  The options the customer has specified
+     */
+    Map<String, Object> customerInput = new HashMap<>();
+
+    /**
      * User who made the booking
      */
     private User customer;
-
-    /**
-     * Status of the booking
-     */
-    private BookingStatus status;
-
+    
     /**
      * Which service has been booked
      */
     private ServiceOfferingDefinition serviceOfferingDefinition;
 
+
     /**
-     *  The options the customer has specified
+     * The validation results when the booking was made
      */
-    Map<String, Object> customerInput = new HashMap<>();
+    private List<ValidationResult> validationResults = new ArrayList<>();
 
     public Instant getCreatedAt() {
         return createdAt;
@@ -51,14 +53,6 @@ public class Booking {
 
     public void setCustomer(User customer) {
         this.customer = customer;
-    }
-
-    public BookingStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(BookingStatus status) {
-        this.status = status;
     }
 
     public ServiceOfferingDefinition getServiceOfferingDefinition() {

@@ -1,6 +1,5 @@
 package com.oe.ziel.domain.booking;
 
-import com.oe.ziel.domain.ServiceOfferingDefinition;
 import com.oe.ziel.domain.user.User;
 
 public class BookingBuilder {
