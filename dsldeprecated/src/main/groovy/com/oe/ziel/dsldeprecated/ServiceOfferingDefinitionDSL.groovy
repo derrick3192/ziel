@@ -4,6 +4,7 @@ import com.oe.ziel.domain.booking.ServiceOfferingDefinition
 import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.constraints.Constraint
 import com.oe.ziel.domain.user.User
+import com.oe.ziel.domain.work.Gantt
 import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsldeprecated.booking.gantt.GanttSpec
 import com.oe.ziel.domain.booking.options.BookingOption
@@ -63,5 +64,15 @@ abstract class ServiceOfferingDefinitionDSL implements ServiceOfferingDefinition
 
     List<Work> work(Booking booking) {
         return gantt.work(booking)
+    }
+
+    @Override
+    List<BookingOption<?>> bookingOptions(User customer) {
+        return null
+    }
+
+    @Override
+    Gantt gantt(Booking booking) {
+        return null
     }
 }
