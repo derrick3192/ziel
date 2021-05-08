@@ -1,6 +1,7 @@
 package com.oe.ziel.domain.booking;
 
 import com.oe.ziel.domain.booking.options.BookingOption;
+import com.oe.ziel.domain.booking.options.validation.ValidationResult;
 import com.oe.ziel.domain.user.User;
 import com.oe.ziel.domain.work.Gantt;
 

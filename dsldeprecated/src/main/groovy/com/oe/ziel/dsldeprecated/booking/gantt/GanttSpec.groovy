@@ -37,8 +37,6 @@ class GanttSpec extends WorkSpec {
 
 
     protected <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
-        cl.rehydrate(bookingOption, this, this)
-        cl.call()
         bookingOptions.add(bookingOption)
         return bookingOption
     }

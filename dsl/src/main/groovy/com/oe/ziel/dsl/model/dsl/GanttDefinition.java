@@ -1,11 +1,54 @@
 package com.oe.ziel.dsl.model.dsl;
 
+import com.oe.ziel.domain.booking.options.BookingOption;
+import com.oe.ziel.domain.booking.options.BoolOption;
+import com.oe.ziel.domain.booking.options.IntOption;
+import com.oe.ziel.domain.booking.options.OptionList;
 import com.oe.ziel.dsl.model.Note;
 import com.oe.ziel.dsl.model.RelationshipType;
+import groovy.lang.Closure;
+import groovy.lang.DelegatesTo;
+import space.jasan.support.groovy.closure.ConsumerWithDelegate;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public interface GanttDefinition {
+
+    List<BookingOption> getBookingOptions();
+
+    default <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
+        Consumer<Object> cl2 = ConsumerWithDelegate.create(cl);
+        //cl.rehydrate(bookingOption, this, this);
+        cl2.accept(bookingOption);
+        getBookingOptions().add(bookingOption);
+        return bookingOption;
+    }
+
+    default OptionList optionList(@DelegatesTo(value = OptionList.class, strategy = Closure.DELEGATE_FIRST) Closure cl) {
+        return buildOption(cl, new OptionList());
+    }
+
+    default BoolOption boolOption(@DelegatesTo(value = BoolOption.class, strategy = Closure.DELEGATE_FIRST) Closure cl) {
+        return buildOption(cl, new BoolOption());
+    }
+
+    default IntOption intOption(@DelegatesTo(value = IntOption.class, strategy = Closure.DELEGATE_FIRST) Closure cl) {
+        return buildOption(cl, new IntOption());
+    }
+
+//    ValidationResult validation(@DelegatesTo(value = Validation) Closure cl) {
+//        Validation validation = new Validation()
+//        cl.rehydrate(validation, this, this)
+//        cl.call()
+//        return validation
+//    }
+
+
+
+
+
+
 
     default Note note(String text) {
         return note(text, null);

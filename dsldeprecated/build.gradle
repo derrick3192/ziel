@@ -23,4 +23,5 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'space.jasan:groovy-closure-support:0.4.0'
 }

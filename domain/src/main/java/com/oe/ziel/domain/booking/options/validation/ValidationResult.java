@@ -1,11 +1,10 @@
-package com.oe.ziel.domain.booking;
+package com.oe.ziel.domain.booking.options.validation;
 
-public class ValidationResult {
+public class ValidationResult<VALUE> {
 
     private boolean valid;
-    private String param;
     private String message;
-    private Object value;
+    private VALUE value;
 
     public boolean isValid() {
         return valid;
@@ -13,14 +12,6 @@ public class ValidationResult {
 
     public void setValid(boolean valid) {
         this.valid = valid;
-    }
-
-    public String getParam() {
-        return param;
-    }
-
-    public void setParam(String param) {
-        this.param = param;
     }
 
     public String getMessage() {
@@ -31,11 +22,11 @@ public class ValidationResult {
         this.message = message;
     }
 
-    public Object getValue() {
+    public VALUE getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(VALUE value) {
         this.value = value;
     }
 }

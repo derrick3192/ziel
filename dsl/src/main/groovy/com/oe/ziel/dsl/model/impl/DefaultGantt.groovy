@@ -1,6 +1,6 @@
 package com.oe.ziel.dsl.model.impl
 
-
+import com.oe.ziel.domain.booking.options.BookingOption
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.Note
 import com.oe.ziel.dsl.model.RelationshipType
@@ -24,6 +24,7 @@ class DefaultGantt implements Gantt, GanttDefinition {
     final Collection<DefaultNote> notes = new LinkedHashSet<>()
     final Collection<DefaultRelationship> relationships = new LinkedHashSet<>()
     final Map<String, Object> metadata = new LinkedHashMap<>();
+    final List<BookingOption> bookingOptions = new ArrayList<>()
 
     private final Map<String, DefaultType> typesMap = [:].withDefault { key -> new DefaultType(this, key.toString()) }
     private final Map<Class<? extends GanttHelper>, GanttHelper> helperMap = [:]
@@ -31,6 +32,11 @@ class DefaultGantt implements Gantt, GanttDefinition {
     @Override
     Collection<? extends com.oe.ziel.dsl.model.Type> getTypes() {
         return typesMap.values()
+    }
+
+    @Override
+    List<BookingOption> getBookingOptions() {
+        return bookingOptions
     }
 
     @Override

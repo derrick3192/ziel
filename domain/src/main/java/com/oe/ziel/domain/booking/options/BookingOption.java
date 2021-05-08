@@ -2,11 +2,11 @@ package com.oe.ziel.domain.booking.options;
 
 public abstract class BookingOption<VALUE> {
 
-    private VALUE selected;
-    private String id;
-    private String label;
-    private String description;
-    private boolean required;
+    protected VALUE selected;
+    protected String id;
+    protected String label;
+    protected String description;
+    protected boolean required;
 
     public VALUE getSelected() {
         return selected;

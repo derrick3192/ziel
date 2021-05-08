@@ -1,5 +1,6 @@
 package com.oe.ziel.domain.booking;
 
+import com.oe.ziel.domain.booking.options.validation.ValidationResult;
 import com.oe.ziel.domain.user.User;
 import org.joda.time.Instant;
 
