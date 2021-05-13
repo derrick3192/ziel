@@ -9,6 +9,6 @@ public interface BookingOptionValidator<VALUE> {
      * @param bi
      * @return
      */
-    ValidationResult validate(BookingOption<VALUE> bi);
+    BookingOptionValidationResult validate(BookingOption<VALUE> bi);
 
 }

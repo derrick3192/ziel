@@ -1,38 +1,40 @@
 package com.oe.ziel.domain.booking;
 
 import com.oe.ziel.domain.booking.options.BookingOption;
-import com.oe.ziel.domain.booking.options.validation.ValidationResult;
-import com.oe.ziel.domain.user.User;
+import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult;
 import com.oe.ziel.domain.work.Gantt;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
-// consider using the word schema
-public interface ServiceOfferingDefinition {
+/**
+ * A Service Offering Definition is a recipe to convert customer input into work which needs to be done by the organization.
+ */
+public abstract class ServiceOfferingDefinition {
 
     /**
-     * Show the booking options for the user to make a selection from.
-     * @param customer who is ordering the service. For some customers you may want to desplay different booking options
+     * The booking options available to the customer
      * @return the booking options the customer can use
      */
-    List<BookingOption<?>> bookingOptions(User customer);
+    public abstract List<BookingOption<?>> bookingOptions();
 
     /**
-     * Optional method which can be implemented to verify if a user has input valid input data for the booking
-     * @param input what the customer has input
-     * @return validation results
+     * Perform validation on the booking options a customer has specified. It is enough to return only invalid results,
+     * as missing results on an option will be assumed to be valid.
+     * @param bookingOptions the option to validate
+     * @return the validation results for the given option
      */
-    default List<ValidationResult> validate(Map<String, Object> input) {
-        return new ArrayList<>();
+    public List<BookingOptionValidationResult<?>> validate(List<BookingOption<?>> bookingOptions) {
+        return bookingOptions().stream().map(bi -> new BookingOptionValidationResult<>(true, "valid", bi)).collect(Collectors.toList());
     }
 
     /**
-     * Given a booking return the resulting gantt
-     * @param booking the input for the service
-     * @return gantt which encapsulates the
+     * This is the crux of a service offering. The gantt represents the work involved in to deliver the service, and the
+     * applicable constraints. Particular work might only be able to be performed by a resources with particular
+     * attributes, or the work might need to be performed in a given order.
+     * @param bookingOptions
+     * @return
      */
-    Gantt gantt(Booking booking);
+    public abstract Gantt gantt(List<BookingOption<?>> bookingOptions);
 
 }

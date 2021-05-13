@@ -7,7 +7,7 @@ import com.oe.ziel.dsl.model.Gantt
 import groovy.transform.CompileStatic
 import org.junit.Test
 
-class NewTest {
+class CoffeeDSLTest {
 
     List<String> milkOptions = ["Full Cream", "Almond", "Soy"]
     List<CoffeeConfig> coffeeSizes = [

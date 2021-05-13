@@ -12,6 +12,6 @@ public interface BookingValidator {
      * @return validation results for a booking
      *
      */
-    List<ValidationResult> validate(Booking booking);
+    List<BookingOptionValidationResult> validate(Booking booking);
 
 }

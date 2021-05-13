@@ -1,6 +1,6 @@
 package com.oe.ziel.domain.booking;
 
-import com.oe.ziel.domain.booking.options.validation.ValidationResult;
+import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult;
 import com.oe.ziel.domain.user.User;
 import org.joda.time.Instant;
 
@@ -38,7 +38,7 @@ public class Booking {
     /**
      * The validation results when the booking was made
      */
-    private List<ValidationResult> validationResults = new ArrayList<>();
+    private List<BookingOptionValidationResult> bookingOptionValidationResults = new ArrayList<>();
 
     public Instant getCreatedAt() {
         return createdAt;
