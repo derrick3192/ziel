@@ -1,5 +1,6 @@
 package com.oe.ziel.dsl.model.impl
 
+import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.booking.options.BookingOption
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.Note
@@ -21,6 +22,8 @@ import java.util.function.Consumer
 @EqualsAndHashCode
 class DefaultGantt implements Gantt, GanttDefinition {
 
+    private Booking booking
+
     final Collection<DefaultNote> notes = new LinkedHashSet<>()
     final Collection<DefaultRelationship> relationships = new LinkedHashSet<>()
     final Map<String, Object> metadata = new LinkedHashMap<>();
@@ -32,6 +35,11 @@ class DefaultGantt implements Gantt, GanttDefinition {
     @Override
     Collection<? extends com.oe.ziel.dsl.model.Type> getTypes() {
         return typesMap.values()
+    }
+
+    @Override
+    void accept(Booking booking) {
+        this.booking = booking
     }
 
     @Override

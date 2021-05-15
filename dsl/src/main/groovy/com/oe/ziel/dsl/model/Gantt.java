@@ -1,5 +1,6 @@
 package com.oe.ziel.dsl.model;
 
+import com.oe.ziel.domain.booking.Booking;
 import com.oe.ziel.dsl.model.dsl.GanttDefinition;
 import com.oe.ziel.dsl.model.impl.DefaultGanttFactory;
 
@@ -18,5 +19,8 @@ public interface Gantt {
     Collection<? extends Relationship> getRelationships();
 
     Map<String, Object> getMetadata();
+
+
+    void accept(Booking booking);
 
 }
