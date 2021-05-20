@@ -5,6 +5,9 @@ import com.oe.ziel.domain.constraints.Constraint
 import com.oe.ziel.domain.constraints.WorkDependencyConstraint
 import org.joda.time.Instant
 
+import java.util.function.Consumer
+
+
 class WorkSpec {
 
 
@@ -58,5 +61,38 @@ class WorkSpec {
         cl.call()
 
         return resource
+    }
+
+    Booking getBooking() {
+        return booking
+    }
+
+    void setBooking(Booking booking) {
+        this.booking = booking
+    }
+
+
+    private Consumer<WorkSpec> consumer;
+
+    void addConsumer(Consumer<WorkSpec> consumer) {
+        this.consumer = consumer
+    }
+
+    void build() {
+        consumer.accept(this)
+    }
+
+
+    @Override
+    public String toString() {
+        return "WorkSpec{" +
+            "name='" + name + '\'' +
+            ", amount=" + amount +
+            ", priority=" + priority +
+            ", description='" + description + '\'' +
+            ", age=" + age +
+            ", maxStartTime=" + maxStartTime +
+            ", maxFinishTime=" + maxFinishTime +
+            '}';
     }
 }

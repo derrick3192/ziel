@@ -9,7 +9,7 @@ import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsldeprecated.booking.gantt.GanttSpec
 import com.oe.ziel.domain.booking.options.BookingOption
 
-abstract class ServiceOfferingDefinitionDSL implements ServiceOfferingDefinition {
+abstract class ServiceOfferingDefinitionDSL extends ServiceOfferingDefinition {
 
     protected ServiceOfferingDefinitionDSL() {
         ganttSpec = ganttSpec()
@@ -66,12 +66,10 @@ abstract class ServiceOfferingDefinitionDSL implements ServiceOfferingDefinition
         return gantt.work(booking)
     }
 
-    @Override
     List<BookingOption<?>> bookingOptions(User customer) {
         return null
     }
 
-    @Override
     Gantt gantt(Booking booking) {
         return null
     }

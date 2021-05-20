@@ -4,6 +4,7 @@ import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.booking.options.BoolOption
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
+import com.oe.ziel.domain.user.User
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
 import groovy.transform.CompileStatic
@@ -13,6 +14,9 @@ import org.joda.time.Minutes
 import org.junit.Test
 
 class CoffeeDSLTest {
+
+    private User derrops = new User(username: "derrops", displayName: "DeRR0ps", city: "Brunswick West")
+
 
     List<String> milkOptions = ["Full Cream", "Almond", "Soy"]
     List<CoffeeConfig> coffeeSizes = [
@@ -85,8 +89,20 @@ class CoffeeDSLTest {
 
         }
 
-        Booking booking = new Booking(createdAt: Instant.now())
+
+        Booking booking = new Booking(
+            createdAt: Instant.now(),
+            customerInput: [
+                coffeeSize : "MED",
+                milk : "Almond",
+                sugar : true,
+                extraShots : false
+            ],
+            customer: derrops
+        )
         gantt.accept(booking)
+        //List<Validation> gantt.validate()
+
 
     }
 

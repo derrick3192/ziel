@@ -9,10 +9,12 @@ import com.oe.ziel.dsl.model.dsl.GanttDefinition
 import com.oe.ziel.dsl.model.dsl.GanttHelper
 import com.oe.ziel.dsl.model.dsl.RelationshipDefinition
 import com.oe.ziel.dsl.model.dsl.TypeDefinition
+import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
 import groovy.transform.CompileStatic
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.PackageScope
 import groovy.transform.ToString
+import space.jasan.support.groovy.closure.ConsumerWithDelegate
 
 import java.util.function.Consumer
 
@@ -24,6 +26,14 @@ class DefaultGantt implements Gantt, GanttDefinition {
 
     private Booking booking
 
+    private List<WorkSpec> workSpecs = new ArrayList<>();
+
+
+
+
+
+
+
     final Collection<DefaultNote> notes = new LinkedHashSet<>()
     final Collection<DefaultRelationship> relationships = new LinkedHashSet<>()
     final Map<String, Object> metadata = new LinkedHashMap<>();
@@ -31,6 +41,21 @@ class DefaultGantt implements Gantt, GanttDefinition {
 
     private final Map<String, DefaultType> typesMap = [:].withDefault { key -> new DefaultType(this, key.toString()) }
     private final Map<Class<? extends GanttHelper>, GanttHelper> helperMap = [:]
+
+
+    @Override
+    WorkSpec work(@DelegatesTo(value = WorkSpec.class, strategy = Closure.DELEGATE_FIRST) Closure cl) {
+
+        Consumer<WorkSpec> cl2 = ConsumerWithDelegate.create(cl);
+        WorkSpec workSpec = new WorkSpec();
+        workSpec.addConsumer(cl2)
+
+        workSpecs.add(workSpec)
+
+        return workSpec;
+    }
+
+
 
     @Override
     Collection<? extends com.oe.ziel.dsl.model.Type> getTypes() {
@@ -40,7 +65,20 @@ class DefaultGantt implements Gantt, GanttDefinition {
     @Override
     void accept(Booking booking) {
         this.booking = booking
+
+        for (WorkSpec workSpec in workSpecs) {
+            workSpec.setBooking(booking)
+            workSpec.build()
+            println workSpec
+            //workSpec.setBooking(getBooking());
+            //cl2.accept(workSpec);
+        }
     }
+
+    public Booking getBooking() {
+        return booking
+    }
+
 
     @Override
     List<BookingOption> getBookingOptions() {

@@ -13,6 +13,7 @@ import groovy.lang.DelegatesTo;
 import org.joda.time.Instant;
 import space.jasan.support.groovy.closure.ConsumerWithDelegate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -27,6 +28,10 @@ public interface GanttDefinition {
 
 
     List<BookingOption> getBookingOptions();
+
+
+    Booking getBooking();
+
 
     default <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
         Consumer<Object> cl2 = ConsumerWithDelegate.create(cl);
@@ -48,18 +53,7 @@ public interface GanttDefinition {
         return buildOption(cl, new IntOption());
     }
 
-    default WorkSpec work(@DelegatesTo(value = WorkSpec.class, strategy = Closure.DELEGATE_FIRST) Closure cl) {
-        Consumer<Object> cl2 = ConsumerWithDelegate.create(cl);
-        WorkSpec workSpec = new WorkSpec();
-
-        // TODO take this out of the booking
-        Booking booking = new Booking();
-        booking.setCreatedAt(Instant.now());
-        workSpec.setBooking(booking);
-
-        cl2.accept(workSpec);
-        return workSpec;
-    }
+    WorkSpec work(@DelegatesTo(value = WorkSpec.class, strategy = Closure.DELEGATE_FIRST) Closure cl);
 
 
     //default WorkS work
@@ -160,6 +154,5 @@ public interface GanttDefinition {
 
     <H extends GanttHelper> H configure(Class<H> helper, Consumer<H> additionalProperties);
 
-    void postprocess();
 
 }
