@@ -2,33 +2,16 @@ package com.oe.ziel.domain.booking.options.validation;
 
 import com.oe.ziel.domain.booking.options.BookingOption;
 
-public class BookingOptionValidationResult<VALUE> {
+public class BookingOptionValidationResult<VALUE> extends ValidationResult<VALUE> {
 
-    private boolean valid;
-    private String message;
-    BookingOption<VALUE> bookingOption;
+    protected BookingOption<VALUE> bookingOption;
 
-    public BookingOptionValidationResult(boolean valid, String message, BookingOption<VALUE> bookingOption) {
-        this.valid = valid;
-        this.message = message;
+    public BookingOptionValidationResult(BookingOption bookingOption, boolean valid, String message) {
         this.bookingOption = bookingOption;
-    }
-
-    public boolean isValid() {
-        return valid;
-    }
-
-    public void setValid(boolean valid) {
         this.valid = valid;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
         this.message = message;
     }
+
 
     public BookingOption<VALUE> getBookingOption() {
         return bookingOption;
@@ -37,4 +20,10 @@ public class BookingOptionValidationResult<VALUE> {
     public void setBookingOption(BookingOption<VALUE> bookingOption) {
         this.bookingOption = bookingOption;
     }
+
+    @Override
+    public VALUE getValue() {
+        return bookingOption.getSelected();
+    }
+
 }

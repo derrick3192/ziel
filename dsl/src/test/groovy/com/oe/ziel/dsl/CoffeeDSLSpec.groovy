@@ -1,24 +1,23 @@
 package com.oe.ziel.dsl
 
 import com.oe.ziel.domain.booking.Booking
-import com.oe.ziel.domain.booking.options.BookingOption
-import com.oe.ziel.domain.booking.options.BoolOption
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.domain.user.User
-import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
-import groovy.transform.CompileStatic
 import org.joda.time.Hours
 import org.joda.time.Instant
 import org.joda.time.Minutes
-import org.junit.Test
+import spock.lang.Specification
 
-class CoffeeDSLTest {
+class CoffeeDSLSpec extends Specification {
 
-    private User derrops = new User(username: "derrops", displayName: "DeRR0ps", city: "Brunswick West")
-
+    private User derrops = new User(
+        username: "derrops",
+        displayName: "DeRR0ps",
+        city: "Brunswick West"
+    )
 
     List<String> milkOptions = ["Full Cream", "Almond", "Soy"]
     List<CoffeeConfig> coffeeSizes = [
@@ -28,7 +27,7 @@ class CoffeeDSLTest {
     ]
 
 
-    Gantt gantt = Gantt.build {
+    Gantt coffeeGantt = Gantt.build {
 
         OptionList coffeeSize = optionList {
             id = "coffeeSize"
@@ -48,6 +47,7 @@ class CoffeeDSLTest {
             selected = "Full Cream"
             required = false
         }
+
 
         IntOption sugar = intOption {
             id = "sugar"
@@ -119,31 +119,45 @@ class CoffeeDSLTest {
 
     }
 
-    @CompileStatic
-    void test() {
+    Booking unknownParamBooking = new Booking(
+        createdAt: Instant.now(),
+        customerInput: [
+            coffeeSize : "MED",
+            milk : "Almond",
+            sugar : 5,
+            extraShots : false,
+            someUnkownParam : "something"
+        ],
+        customer: derrops
+    )
 
-        Booking booking = new Booking(
-            createdAt: Instant.now(),
-            customerInput: [
-                coffeeSize : "MED",
-                milk : "Almond",
-                sugar : 5,
-                extraShots : false
-            ],
-            customer: derrops
-        )
-        gantt.accept(booking)
+    Booking coffeeSizeMissing = new Booking(
+        createdAt: Instant.now(),
+        customerInput: [
+            milk : "Almond",
+            sugar : 5,
+            extraShots : false
+        ],
+        customer: derrops
+    )
 
-
-        List<? extends Work> works = gantt.getWorks()
-
-        println works
-
-
+    def "If an unknown parameter is present throw a RuntimeException" () {
+        given:
+            Booking booking = unknownParamBooking
+        when:
+            coffeeGantt.accept(booking)
+        then:
+            thrown(RuntimeException)
     }
 
 
-
-
+    def "If a required parameter is missing, that option should be invalid" () {
+        given:
+            Booking booking = coffeeSizeMissing
+        when:
+            coffeeGantt.accept(booking)
+        then:
+            coffeeGantt.validations().find{it.valid == false}.message == "Booking option of coffeeSize not found"
+    }
 
 }

@@ -25,7 +25,7 @@ public abstract class ServiceOfferingDefinition {
      * @return the validation results for the given option
      */
     public List<BookingOptionValidationResult<?>> validate(List<BookingOption<?>> bookingOptions) {
-        return bookingOptions().stream().map(bi -> new BookingOptionValidationResult<>(true, "valid", bi)).collect(Collectors.toList());
+        return bookingOptions().stream().map(bi -> new BookingOptionValidationResult<>(bi, true, "valid")).collect(Collectors.toList());
     }
 
     /**

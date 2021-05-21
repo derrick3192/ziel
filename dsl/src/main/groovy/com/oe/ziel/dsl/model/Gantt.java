@@ -2,6 +2,8 @@ package com.oe.ziel.dsl.model;
 
 import com.oe.ziel.domain.booking.Booking;
 import com.oe.ziel.domain.booking.options.BookingOption;
+import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult;
+import com.oe.ziel.domain.booking.options.validation.ValidationResult;
 import com.oe.ziel.domain.work.Work;
 import com.oe.ziel.dsl.model.dsl.GanttDefinition;
 import com.oe.ziel.dsl.model.impl.DefaultGanttFactory;
@@ -39,4 +41,6 @@ public interface Gantt {
     public Booking getBooking();
 
     List<? extends Work> getWorks();
+
+    List<ValidationResult<?>> validations();
 }

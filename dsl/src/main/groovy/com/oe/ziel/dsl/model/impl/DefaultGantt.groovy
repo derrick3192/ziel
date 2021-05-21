@@ -2,6 +2,8 @@ package com.oe.ziel.dsl.model.impl
 
 import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.booking.options.BookingOption
+import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult
+import com.oe.ziel.domain.booking.options.validation.ValidationResult
 import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.Note
@@ -29,9 +31,7 @@ class DefaultGantt implements Gantt, GanttDefinition {
 
     private List<WorkSpec> workSpecs = new ArrayList<>();
 
-
-
-
+    private List<ValidationResult<?>> validations = new ArrayList<>();
 
 
 
@@ -65,16 +65,29 @@ class DefaultGantt implements Gantt, GanttDefinition {
 
     @Override
     void accept(Booking booking) {
+
+        // set the booking which can be used in expressions
         this.booking = booking
 
+        // check if any required values are missing
+        bookingOptions.forEach{BookingOption it ->
+            if (it.isRequired() && !booking.getCustomerInput().keySet().contains(it.getId())) {
+                validations.add(new BookingOptionValidationResult<>(it, false, "Booking option of " + it.id + " not found"))
+            }
+        }
+
+        // set the selected values
         for (Map.Entry<String, ?> ci : booking.getCustomerInput().entrySet()) {
-            BookingOption<?> bo = getBookingOptions().find{ (it.id == ci.getKey()) }
+            BookingOption<?> bo = bookingOptions.find{ (it.id == ci.getKey()) }
             if (bo == null) {
                 throw new RuntimeException("Could not find booking option for customer input of: " + ci.getKey() + " = " + ci.getValue())
             }
+
             bo.setSelected(ci.getValue())
         }
 
+
+        // construct the work specs
         for (WorkSpec workSpec in workSpecs) {
             workSpec.setBooking(booking)
             workSpec.build()
@@ -136,8 +149,13 @@ class DefaultGantt implements Gantt, GanttDefinition {
         }
     }
 
-
+    @Override
     public List<? extends Work> getWorks() {
         return workSpecs
+    }
+
+    @Override
+    public List<ValidationResult<?>> validations() {
+        return validations;
     }
 }
