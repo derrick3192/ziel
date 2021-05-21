@@ -53,11 +53,11 @@ class CoffeeDSLTest {
                 required = false
             }
 
-            BoolOption sugar = boolOption {
+            IntOption sugar = intOption {
                 id = "sugar"
-                label = "Sugar?"
+                label = "No. Sugar"
                 description = "If you want the white tasty sugar in your drink or not"
-                selected = false
+                selected = 1
                 required = false
             }
 
@@ -75,7 +75,7 @@ class CoffeeDSLTest {
 
                 name = "Boil Water"
                 description = "Boiling the water is the process of heating the water to 100 degrees"
-                amount = 10
+                amount = sugar.selected * 10
 
                 maxStartTime = booking.createdAt + Minutes.minutes(20).toStandardDuration()
                 maxFinishTime = booking.createdAt + Hours.hours(1).toStandardDuration()
@@ -129,15 +129,17 @@ class CoffeeDSLTest {
             customerInput: [
                 coffeeSize : "MED",
                 milk : "Almond",
-                sugar : true,
+                sugar : 5,
                 extraShots : false
             ],
             customer: derrops
         )
         gantt.accept(booking)
 
+
         List<? extends Work> works = gantt.getWorks()
 
+        println works
 
 //        List<BookingOption<?>> bookingOptions = booking
 //        println bookingOptions

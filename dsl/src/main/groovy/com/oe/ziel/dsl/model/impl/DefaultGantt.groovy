@@ -67,13 +67,19 @@ class DefaultGantt implements Gantt, GanttDefinition {
     void accept(Booking booking) {
         this.booking = booking
 
+        for (Map.Entry<String, ?> ci : booking.getCustomerInput().entrySet()) {
+            BookingOption<?> bo = getBookingOptions().find{ (it.id == ci.getKey()) }
+            if (bo == null) {
+                throw new RuntimeException("Could not find booking option for customer input of: " + ci.getKey() + " = " + ci.getValue())
+            }
+            bo.setSelected(ci.getValue())
+        }
+
         for (WorkSpec workSpec in workSpecs) {
             workSpec.setBooking(booking)
             workSpec.build()
-            println workSpec
-            //workSpec.setBooking(getBooking());
-            //cl2.accept(workSpec);
         }
+
     }
 
     @Override
