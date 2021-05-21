@@ -8,6 +8,8 @@ import org.joda.time.Duration;
 import org.joda.time.Instant;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class TestOptaplannerSolver {
 
     final Skill SKILL_A = new Skill("A");
@@ -32,8 +34,12 @@ public class TestOptaplannerSolver {
         Booking booking = new Booking();
         booking.setCreatedAt(Instant.now());
 //        booking.setServiceOfferingDefinition();
-//        solver.solve()
-        System.out.println("hello");
+
+        solver.solve(
+                Arrays.asList(booking),
+                Arrays.asList(resourceA, resourceB, resourceC)
+        );
+
     }
 
 }

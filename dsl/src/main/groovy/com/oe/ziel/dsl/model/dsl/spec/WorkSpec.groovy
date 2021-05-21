@@ -3,33 +3,19 @@ package com.oe.ziel.dsl.model.dsl.spec
 import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.constraints.Constraint
 import com.oe.ziel.domain.constraints.WorkDependencyConstraint
-import org.joda.time.Instant
+import com.oe.ziel.domain.work.Work
+
 
 import java.util.function.Consumer
 
 
-class WorkSpec {
+class WorkSpec extends Work{
 
 
     Booking booking
 
     List<Constraint> constraints = new ArrayList<>()
 
-    String name
-
-    double amount
-
-    int priority = 0
-
-    String description
-
-    int age;
-
-    Instant maxStartTime
-
-    Instant maxFinishTime
-
-    boolean dependsOnAllOtherTasks
 
     /**
      * Condition for task being completed
@@ -90,7 +76,6 @@ class WorkSpec {
             ", amount=" + amount +
             ", priority=" + priority +
             ", description='" + description + '\'' +
-            ", age=" + age +
             ", maxStartTime=" + maxStartTime +
             ", maxFinishTime=" + maxFinishTime +
             '}';

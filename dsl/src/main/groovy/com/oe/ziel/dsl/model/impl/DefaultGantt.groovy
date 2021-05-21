@@ -2,6 +2,7 @@ package com.oe.ziel.dsl.model.impl
 
 import com.oe.ziel.domain.booking.Booking
 import com.oe.ziel.domain.booking.options.BookingOption
+import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.Note
 import com.oe.ziel.dsl.model.RelationshipType
@@ -52,7 +53,7 @@ class DefaultGantt implements Gantt, GanttDefinition {
 
         workSpecs.add(workSpec)
 
-        return workSpec;
+        return workSpec
     }
 
 
@@ -75,7 +76,8 @@ class DefaultGantt implements Gantt, GanttDefinition {
         }
     }
 
-    public Booking getBooking() {
+    @Override
+    Booking getBooking() {
         return booking
     }
 
@@ -126,5 +128,10 @@ class DefaultGantt implements Gantt, GanttDefinition {
         for (GanttHelper helper : helperMap.values()) {
             metadata.putAll(helper.metadata)
         }
+    }
+
+
+    public List<? extends Work> getWorks() {
+        return workSpecs
     }
 }

@@ -1,10 +1,13 @@
 package com.oe.ziel.dsl.model;
 
 import com.oe.ziel.domain.booking.Booking;
+import com.oe.ziel.domain.booking.options.BookingOption;
+import com.oe.ziel.domain.work.Work;
 import com.oe.ziel.dsl.model.dsl.GanttDefinition;
 import com.oe.ziel.dsl.model.impl.DefaultGanttFactory;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -33,4 +36,7 @@ public interface Gantt {
     void accept(Booking booking);
 
 
+    public Booking getBooking();
+
+    List<? extends Work> getWorks();
 }
