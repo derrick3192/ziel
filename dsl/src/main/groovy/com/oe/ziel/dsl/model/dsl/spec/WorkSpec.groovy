@@ -73,7 +73,7 @@ class WorkSpec extends Work{
     public String toString() {
         return "WorkSpec{" +
             "name='" + name + '\'' +
-            ", amount=" + amount.getStandardHours() +
+            ", amount=" + duration.getStandardHours() +
             ", priority=" + priority +
             ", description='" + description + '\'' +
             ", maxStartTime=" + maxStartTime +

@@ -16,7 +16,7 @@ public class Work {
     /**
      * The Standard Duration, that is how long it will take to complete the job with a speed factor of 1. (0.9 would mean a resource would only do 90% of the work in the same amount of time. 2.0 would be if a resource would complete twice the amount of work for the same amount of time.
      */
-    protected Duration amount;
+    protected Duration duration;
 
     /**
      * The Standard Cost, that is the cost given a cost factor of 1, (1.1 would be a 10% increase).
@@ -53,16 +53,16 @@ public class Work {
         this.name = name;
     }
 
-    public Duration getAmount() {
-        return amount;
+    public Duration getDuration() {
+        return duration;
     }
 
-    public void setAmount(Integer hours) {
+    public void setDuration(Integer hours) {
         setAmount(Duration.standardHours(hours));
     }
 
     public void setAmount(Duration amount) {
-        this.amount = amount;
+        this.duration = amount;
     }
 
     public double getCost() {

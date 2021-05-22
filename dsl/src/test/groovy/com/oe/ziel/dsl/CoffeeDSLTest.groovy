@@ -1,19 +1,13 @@
 package com.oe.ziel.dsl
 
-import com.oe.ziel.domain.booking.Booking
-import com.oe.ziel.domain.booking.options.BookingOption
-import com.oe.ziel.domain.booking.options.BoolOption
+
 import com.oe.ziel.domain.booking.options.IntOption
 import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.domain.user.User
-import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
-import groovy.transform.CompileStatic
 import org.joda.time.Hours
-import org.joda.time.Instant
 import org.joda.time.Minutes
-import org.junit.Test
 
 class CoffeeDSLTest {
 
@@ -71,7 +65,7 @@ class CoffeeDSLTest {
 
             name = "Boil Water"
             description = "Boiling the water is the process of heating the water to 100 degrees"
-            amount = sugar.selected * 10
+            duration = sugar.selected * 10
 
             maxStartTime = booking.createdAt + Minutes.minutes(20).toStandardDuration()
             maxFinishTime = booking.createdAt + Hours.hours(1).toStandardDuration()

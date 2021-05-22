@@ -73,7 +73,7 @@ class CoffeeDSLSpec extends Specification {
 
             name = "Boil Water"
             description = "Boiling the water is the process of heating the water to 100 degrees"
-            amount = sugar.selected * 10
+            duration = sugar.selected * 10
 
             maxStartTime = booking.createdAt + Minutes.minutes(20).toStandardDuration()
             maxFinishTime = booking.createdAt + Hours.hours(1).toStandardDuration()
