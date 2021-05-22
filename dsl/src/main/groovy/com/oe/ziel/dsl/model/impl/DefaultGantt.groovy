@@ -63,36 +63,31 @@ class DefaultGantt implements Gantt, GanttDefinition {
         return typesMap.values()
     }
 
-    @Override
-    void accept(Booking booking) {
-
-        // set the booking which can be used in expressions
-        this.booking = booking
-
-        // check if any required values are missing
+    protected validateAllRequiredParametersSpecified() {
         bookingOptions.forEach{BookingOption it ->
             if (it.isRequired() && !booking.getCustomerInput().keySet().contains(it.getId())) {
                 validations.add(new BookingOptionValidationResult<>(it, false, "Booking option of " + it.id + " not found"))
             }
         }
+    }
 
-        // set the selected values
+    protected setCustomerInput() {
         for (Map.Entry<String, ?> ci : booking.getCustomerInput().entrySet()) {
             BookingOption<?> bo = bookingOptions.find{ (it.id == ci.getKey()) }
             if (bo == null) {
                 throw new RuntimeException("Could not find booking option for customer input of: " + ci.getKey() + " = " + ci.getValue())
             }
-
             bo.setSelected(ci.getValue())
         }
+    }
 
-
-        // construct the work specs
-        for (WorkSpec workSpec in workSpecs) {
-            workSpec.setBooking(booking)
-            workSpec.build()
-        }
-
+    @CompileStatic
+    @Override
+    void accept(Booking booking) {
+        this.booking = booking
+        validateAllRequiredParametersSpecified()
+        setCustomerInput()
+        workSpecs.forEach{WorkSpec ws -> ws.setBooking(booking) ; ws.build()}
     }
 
     @Override
