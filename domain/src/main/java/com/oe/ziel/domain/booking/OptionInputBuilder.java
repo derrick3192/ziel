@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class OptionInputBuilder {
 
-    Map<String, Object> options = new HashMap<>();
+    Map<String, Comparable<?>> options = new HashMap<>();
 
     private BookingBuilder bookingBuilder;
 

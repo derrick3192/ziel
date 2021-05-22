@@ -66,13 +66,20 @@ class DefaultGantt implements Gantt, GanttDefinition {
     protected validateAllRequiredParametersSpecified() {
         bookingOptions.forEach{BookingOption it ->
             if (it.isRequired() && !booking.getCustomerInput().keySet().contains(it.getId())) {
-                validations.add(new BookingOptionValidationResult<>(it, false, "Booking option of " + it.id + " not found"))
+                validations.add(new BookingOptionValidationResult<>(it, false, "Booking option of " + it.getLabel() + " not found"))
             }
         }
     }
 
+    protected validateAllParametersWithinBounds() {
+        bookingOptions.forEach{BookingOption bo ->
+            if (bo.isTooLarge()) validations.add(new BookingOptionValidationResult<>(bo, false, "Booking option of " + bo.getLabel() + " too large. Maximum value is " + bo.getMax()))
+            if (bo.isTooSmall()) validations.add(new BookingOptionValidationResult<>(bo, false, "Booking option of " + bo.getLabel() + " too small. Minimum value is " + bo.getMin()))
+        }
+    }
+
     protected setCustomerInput() {
-        for (Map.Entry<String, ?> ci : booking.getCustomerInput().entrySet()) {
+        for (Map.Entry<String, Comparable<?>> ci : booking.getCustomerInput().entrySet()) {
             BookingOption<?> bo = bookingOptions.find{ (it.id == ci.getKey()) }
             if (bo == null) {
                 throw new RuntimeException("Could not find booking option for customer input of: " + ci.getKey() + " = " + ci.getValue())
@@ -85,8 +92,11 @@ class DefaultGantt implements Gantt, GanttDefinition {
     @Override
     void accept(Booking booking) {
         this.booking = booking
+
         validateAllRequiredParametersSpecified()
         setCustomerInput()
+        validateAllParametersWithinBounds()
+
         workSpecs.forEach{WorkSpec ws -> ws.setBooking(booking) ; ws.build()}
     }
 

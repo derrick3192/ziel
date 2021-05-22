@@ -22,7 +22,6 @@ public interface GanttDefinition {
     /**
      * TODO implement this
      * Accept the booking before generating the work
-     * @param booking
      */
 //    void accept(Booking booking);
 

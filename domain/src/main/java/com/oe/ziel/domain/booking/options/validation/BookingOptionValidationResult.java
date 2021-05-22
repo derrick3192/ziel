@@ -2,7 +2,7 @@ package com.oe.ziel.domain.booking.options.validation;
 
 import com.oe.ziel.domain.booking.options.BookingOption;
 
-public class BookingOptionValidationResult<VALUE> extends ValidationResult<VALUE> {
+public class BookingOptionValidationResult<VALUE extends Comparable<VALUE>> extends ValidationResult<VALUE> {
 
     protected BookingOption<VALUE> bookingOption;
 

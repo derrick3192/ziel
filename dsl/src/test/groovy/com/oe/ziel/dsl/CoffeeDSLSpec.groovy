@@ -51,10 +51,12 @@ class CoffeeDSLSpec extends Specification {
 
         IntOption sugar = intOption {
             id = "sugar"
-            label = "No. Sugar"
+            label = "Sugars"
             description = "If you want the white tasty sugar in your drink or not"
             selected = 1
             required = false
+            max = 10
+            min = 0
         }
 
         IntOption extraShots = intOption {
@@ -125,7 +127,7 @@ class CoffeeDSLSpec extends Specification {
             coffeeSize : "MED",
             milk : "Almond",
             sugar : 5,
-            extraShots : false,
+            extraShots : 1,
             someUnkownParam : "something"
         ],
         customer: derrops
@@ -136,7 +138,29 @@ class CoffeeDSLSpec extends Specification {
         customerInput: [
             milk : "Almond",
             sugar : 5,
-            extraShots : false
+            extraShots : 1
+        ],
+        customer: derrops
+    )
+
+    Booking coffeeTooMuchSugar = new Booking(
+        createdAt: Instant.now(),
+        customerInput: [
+            coffeeSize : "MED",
+            milk : "Almond",
+            sugar : 20,
+            extraShots : 1
+        ],
+        customer: derrops
+    )
+
+    Booking coffeeNegativeSugar = new Booking(
+        createdAt: Instant.now(),
+        customerInput: [
+            coffeeSize : "MED",
+            milk : "Almond",
+            sugar : -1,
+            extraShots : 1
         ],
         customer: derrops
     )
@@ -157,7 +181,25 @@ class CoffeeDSLSpec extends Specification {
         when:
             coffeeGantt.accept(booking)
         then:
-            coffeeGantt.validations().find{it.valid == false}.message == "Booking option of coffeeSize not found"
+            coffeeGantt.validations().find{ (!it.valid) }.message == "Booking option of Coffee Size not found"
+    }
+
+    def "If a parameter is too large have there should be an invalid result" () {
+        given:
+            Booking booking = coffeeTooMuchSugar
+        when:
+            coffeeGantt.accept(booking)
+        then:
+            coffeeGantt.validations().find{!it.valid}.message == "Booking option of Sugars too large. Maximum value is 10"
+    }
+
+    def "If a parameter is too small have there should be an invalid result" () {
+        given:
+            Booking booking = coffeeNegativeSugar
+        when:
+            coffeeGantt.accept(booking)
+        then:
+            coffeeGantt.validations().find{!it.valid}.message == "Booking option of Sugars too small. Minimum value is 0"
     }
 
 }

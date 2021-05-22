@@ -39,7 +39,7 @@ subprojects {
 
             // DECLARE DEPENDENCIES HERE
             implementation 'joda-time:joda-time:2.10.7'
-            implementation 'org.codehaus.groovy:groovy-all:2.5.10'
+            implementation 'org.codehaus.groovy:groovy-all:3.0.0'
             implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.3'
             implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
         }

@@ -13,4 +13,16 @@ public class BoolOption extends BookingOption<Boolean> {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public boolean isTooLarge() {
+        if (max == null) return false;
+        return max && !selected;
+    }
+
+    @Override
+    public boolean isTooSmall() {
+        if (min == null) return false;
+        return !min && selected;
+    }
 }

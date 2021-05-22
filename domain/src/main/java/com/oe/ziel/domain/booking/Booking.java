@@ -22,7 +22,7 @@ public class Booking {
     /**
      *  The options the customer has specified
      */
-    Map<String, ?> customerInput = new HashMap<>();
+    Map<String, Comparable<?>> customerInput = new HashMap<>();
 
     /**
      * User who made the booking
@@ -64,11 +64,11 @@ public class Booking {
         this.serviceOfferingDefinition = serviceOfferingDefinition;
     }
 
-    public Map<String, ?> getCustomerInput() {
+    public Map<String, Comparable<?>> getCustomerInput() {
         return customerInput;
     }
 
-    public void setCustomerInput(Map<String, ?> customerInput) {
+    public void setCustomerInput(Map<String, Comparable<?>> customerInput) {
         this.customerInput = customerInput;
     }
 }

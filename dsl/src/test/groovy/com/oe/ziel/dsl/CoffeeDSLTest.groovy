@@ -119,28 +119,30 @@ class CoffeeDSLTest {
 
     }
 
-    @CompileStatic
-    void test() {
-
-        Booking booking = new Booking(
-            createdAt: Instant.now(),
-            customerInput: [
-                coffeeSize : "MED",
-                milk : "Almond",
-                sugar : 5,
-                extraShots : false
-            ],
-            customer: derrops
-        )
-        gantt.accept(booking)
-
-
-        List<? extends Work> works = gantt.getWorks()
-
-        println works
-
-
-    }
+//    @CompileStatic
+//    void test() {
+//
+//        Map<String, Comparable<?>> customerInput = new HashMap<>([
+//            coffeeSize: "MED",
+//            milk: "Almond",
+//            sugar: 5,
+//            extraShots: false
+//        ])
+//
+//        Booking booking = new Booking(
+//            createdAt: Instant.now(),
+//            customerInput: customerInput,
+//            customer: derrops
+//        )
+//        gantt.accept(booking)
+//
+//
+//        List<? extends Work> works = gantt.getWorks()
+//
+//        println works
+//
+//
+//    }
 
 
 
