@@ -6,6 +6,7 @@ import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.domain.user.User
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
+import org.joda.time.Duration
 import org.joda.time.Hours
 import org.joda.time.Instant
 import org.joda.time.Minutes
@@ -73,7 +74,7 @@ class CoffeeDSLSpec extends Specification {
 
             name = "Boil Water"
             description = "Boiling the water is the process of heating the water to 100 degrees"
-            duration = sugar.selected * 10
+            duration = coffeeSizes.find {it.label == coffeeSize.selected}.shots
 
             maxStartTime = booking.createdAt + Minutes.minutes(20).toStandardDuration()
             maxFinishTime = booking.createdAt + Hours.hours(1).toStandardDuration()
@@ -86,14 +87,14 @@ class CoffeeDSLSpec extends Specification {
 
         }
 
-//            def frothMilk = work {
-//                name = "Froth Milk"
-//                amount = booking.customerInput.
-//            }
+        def frothMilk = work {
+            name = "Froth Milk"
+            duration = coffeeSizes.find {it.label == coffeeSize.selected}.milk
+        }
 //
 //            def grindBeans = work {
 //                name = "Grind Coffee Beans"
-//                amount = extraShots.selected + coffee.shots
+//                duration = extraShots.selected + coffee.shots
 //            }
 //
 //            def brewCoffee = work {
@@ -121,6 +122,7 @@ class CoffeeDSLSpec extends Specification {
 
     }
 
+
     Booking unknownParamBooking = new Booking(
         createdAt: Instant.now(),
         customerInput: [
@@ -133,6 +135,7 @@ class CoffeeDSLSpec extends Specification {
         customer: derrops
     )
 
+
     Booking coffeeSizeMissing = new Booking(
         createdAt: Instant.now(),
         customerInput: [
@@ -142,6 +145,7 @@ class CoffeeDSLSpec extends Specification {
         ],
         customer: derrops
     )
+
 
     Booking coffeeTooMuchSugar = new Booking(
         createdAt: Instant.now(),
@@ -154,6 +158,7 @@ class CoffeeDSLSpec extends Specification {
         customer: derrops
     )
 
+
     Booking coffeeNegativeSugar = new Booking(
         createdAt: Instant.now(),
         customerInput: [
@@ -164,6 +169,19 @@ class CoffeeDSLSpec extends Specification {
         ],
         customer: derrops
     )
+
+
+    Booking coffeeThreeSugar = new Booking(
+        createdAt: Instant.now(),
+        customerInput: [
+            coffeeSize : "MED",
+            milk : "Almond",
+            sugar : 3,
+            extraShots : 1
+        ],
+        customer: derrops
+    )
+
 
     def "If an unknown parameter is present throw a RuntimeException" () {
         given:
@@ -184,6 +202,7 @@ class CoffeeDSLSpec extends Specification {
             coffeeGantt.validations().find{ (!it.valid) }.message == "Booking option of Coffee Size not found"
     }
 
+
     def "If a parameter is too large have there should be an invalid result" () {
         given:
             Booking booking = coffeeTooMuchSugar
@@ -193,6 +212,7 @@ class CoffeeDSLSpec extends Specification {
             coffeeGantt.validations().find{!it.valid}.message == "Booking option of Sugars too large. Maximum value is 10"
     }
 
+
     def "If a parameter is too small have there should be an invalid result" () {
         given:
             Booking booking = coffeeNegativeSugar
@@ -200,6 +220,16 @@ class CoffeeDSLSpec extends Specification {
             coffeeGantt.accept(booking)
         then:
             coffeeGantt.validations().find{!it.valid}.message == "Booking option of Sugars too small. Minimum value is 0"
+    }
+
+
+    def "Calculation of work.duration is correct" () {
+        given:
+            Booking booking = coffeeThreeSugar
+        when:
+            coffeeGantt.accept(booking)
+        then:
+        coffeeGantt.works.find { it.name == "Froth Milk" }.duration == Duration.standardHours(8)
     }
 
 }

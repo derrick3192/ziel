@@ -2,13 +2,14 @@ package com.oe.ziel.dsl
 
 class CoffeeConfig {
 
-    int milk
+    Integer milk
     String label
-    int shots
+    Integer shots
 
-    CoffeeConfig(int milk, String label, int shots) {
+    CoffeeConfig(Integer milk, String label, Integer shots) {
         this.milk = milk
         this.label = label
         this.shots = shots
     }
+
 }
