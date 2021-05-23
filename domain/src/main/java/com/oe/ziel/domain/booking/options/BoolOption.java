@@ -25,4 +25,9 @@ public class BoolOption extends BookingOption<Boolean> {
         if (min == null) return false;
         return !min && selected;
     }
+
+    @Override
+    public Double toDouble() {
+        return selected ? 1.0 : 0.0;
+    }
 }

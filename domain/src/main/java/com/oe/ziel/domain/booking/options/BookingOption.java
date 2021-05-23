@@ -1,5 +1,7 @@
 package com.oe.ziel.domain.booking.options;
 
+import java.math.BigDecimal;
+
 public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
 
     /**
@@ -23,9 +25,9 @@ public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
     protected String description;
 
     /**
-     * Whether or not the paramter must be specified
+     * Whether or not the parameter must be specified
      */
-    protected boolean required;
+    protected boolean required = false;
 
     /**
      * The maximum value
@@ -102,5 +104,86 @@ public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
         if (min == null) return false;
         return selected.compareTo(min) < 0;
     }
+
+    public Double toDouble() {
+        return (Double) selected;
+    }
+
+    /**
+     * Operator overloading
+     */
+
+    public Double addition(Integer val) {
+        return toDouble() + val;
+    }
+
+    public Double addition(Double val) {
+        return toDouble() + val;
+    }
+
+    public Double addition(BigDecimal val) {
+        return toDouble() + val.doubleValue();
+    }
+
+    public Double subtraction(Integer val) {
+        return toDouble() - val;
+    }
+
+    public Double subtraction(Double val) {
+        return toDouble() - val;
+    }
+
+    public Double subtraction(BigDecimal val) {
+        return toDouble() - val.doubleValue();
+    }
+
+    public Double multiplication(Integer val) {
+        return toDouble() * val;
+    }
+
+    public Double multiplication(Double val) {
+        return toDouble() * val;
+    }
+
+    public Double multiplication(BigDecimal val) {
+        return toDouble() * val.doubleValue();
+    }
+
+    public Double division(Integer val) {
+        return toDouble() / val;
+    }
+
+    public Double division(BigDecimal val) {
+        return toDouble() / val.doubleValue();
+    }
+
+    public Double division(Double val)  {
+        return toDouble() / val;
+    }
+
+    public Double div(Integer val) {
+        return toDouble() / val;
+    }
+
+    public Double div(BigDecimal val) {
+        return toDouble() / val.doubleValue();
+    }
+
+    public Double div(Double val)  {
+        return toDouble() / val;
+    }
+
+    public Double power(Integer val) {
+        return Math.pow(toDouble(), val);
+    }
+
+    public Double power(Double val) {
+        return Math.pow(toDouble(), val);
+    }
+
+    public Double power(BigDecimal val) {
+        return Math.pow(toDouble(), val.doubleValue());
+    }
+
 
 }

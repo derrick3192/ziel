@@ -57,11 +57,15 @@ public class Work {
         return duration;
     }
 
-    public void setDuration(Integer hours) {
-        setAmount(Duration.standardHours(hours));
+    public void setDuration(Double hours) {
+        setDuration(((int) Math.ceil(hours)));
     }
 
-    public void setAmount(Duration amount) {
+    public void setDuration(Integer hours) {
+        setDuration(Duration.standardHours(hours));
+    }
+
+    public void setDuration(Duration amount) {
         this.duration = amount;
     }
 
@@ -83,6 +87,22 @@ public class Work {
 
     public Map<String, Skill> getRequiredSkills() {
         return requiredSkills;
+    }
+
+    public void setSkill(String skillCode) {
+        this.setSkill(new Skill(skillCode, 0, 0, 0));
+    }
+
+    public void setSkill(String skillCode, Integer major) {
+        this.setSkill(new Skill(skillCode, major, 0, 0));
+    }
+
+    public void setSkill(String skillCode, Integer major, Integer minor, Integer patch) {
+        this.setSkill(new Skill(skillCode, major, minor, patch));
+    }
+
+    public void setSkill(Skill skill) {
+        requiredSkills.put(skill.getSkillCode(), skill);
     }
 
     public void setRequiredSkills(Map<String, Skill> requiredSkills) {

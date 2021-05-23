@@ -52,6 +52,16 @@ public interface GanttDefinition {
         return buildOption(cl, new IntOption());
     }
 
+    default int floor(double val) {
+        return (int) Math.floor(val);
+    }
+
+    default int ceil(double val) {
+        return (int) Math.ceil(val);
+    }
+
+
+    // TODO - wrap in job {} so that you can access the booking before defining the work
     WorkSpec work(@DelegatesTo(value = WorkSpec.class, strategy = Closure.DELEGATE_FIRST) Closure cl);
 
 

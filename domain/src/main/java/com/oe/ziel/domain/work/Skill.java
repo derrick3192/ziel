@@ -8,6 +8,13 @@ public class Skill {
         this.skillCode = skillCode;
     }
 
+    public Skill(String skillCode, int major, int minor, int patch) {
+        this.skillCode = skillCode;
+        this.major = major;
+        this.minor = minor;
+        this.patch = patch;
+    }
+
     /**
      * Unique Code for the string to identify the Skill
      */

@@ -26,6 +26,11 @@ public class OptionList extends BookingOption<String> {
     }
 
     @Override
+    public Double toDouble() {
+        throw new RuntimeException("Cannot covert OptionList.selected to a Number.");
+    }
+
+    @Override
     public String toString() {
         return "OptionList{" +
                 "options=" + options +
