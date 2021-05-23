@@ -105,7 +105,7 @@ public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
         return selected.compareTo(min) < 0;
     }
 
-    public Double toDouble() {
+    public Double doubleValue() {
         return (Double) selected;
     }
 
@@ -114,75 +114,115 @@ public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
      */
 
     public Double addition(Integer val) {
-        return toDouble() + val;
+        return doubleValue() + val;
     }
 
     public Double addition(Double val) {
-        return toDouble() + val;
+        return doubleValue() + val;
     }
 
     public Double addition(BigDecimal val) {
-        return toDouble() + val.doubleValue();
+        return doubleValue() + val.doubleValue();
+    }
+
+    public Double addition(BookingOption<?> val) {
+        return doubleValue() + val.doubleValue();
     }
 
     public Double subtraction(Integer val) {
-        return toDouble() - val;
+        return doubleValue() - val;
     }
 
     public Double subtraction(Double val) {
-        return toDouble() - val;
+        return doubleValue() - val;
     }
 
     public Double subtraction(BigDecimal val) {
-        return toDouble() - val.doubleValue();
+        return doubleValue() - val.doubleValue();
+    }
+
+    public Double subtraction(BookingOption<?> val) {
+        return doubleValue() - val.doubleValue();
     }
 
     public Double multiplication(Integer val) {
-        return toDouble() * val;
+        return doubleValue() * val;
     }
 
     public Double multiplication(Double val) {
-        return toDouble() * val;
+        return doubleValue() * val;
     }
 
     public Double multiplication(BigDecimal val) {
-        return toDouble() * val.doubleValue();
+        return doubleValue() * val.doubleValue();
+    }
+
+    public Double multiplication(BookingOption<?> val) {
+        return doubleValue() * val.doubleValue();
+    }
+
+    public Double multiply(Integer val) {
+        return doubleValue() * val;
+    }
+
+    public Double multiply(Double val) {
+        return doubleValue() * val;
+    }
+
+    public Double multiply(BigDecimal val) {
+        return doubleValue() * val.doubleValue();
+    }
+
+    public Double multiply(BookingOption<?> val) {
+        return doubleValue() * val.doubleValue();
     }
 
     public Double division(Integer val) {
-        return toDouble() / val;
+        return doubleValue() / val.doubleValue();
     }
 
     public Double division(BigDecimal val) {
-        return toDouble() / val.doubleValue();
+        return doubleValue() / val.doubleValue();
     }
 
     public Double division(Double val)  {
-        return toDouble() / val;
+        return doubleValue() / val.doubleValue();
+    }
+
+    public Double division(BookingOption<?> val)  {
+        return doubleValue() / val.doubleValue();
     }
 
     public Double div(Integer val) {
-        return toDouble() / val;
+        return doubleValue() / val.doubleValue();
     }
 
     public Double div(BigDecimal val) {
-        return toDouble() / val.doubleValue();
+        return doubleValue() / val.doubleValue();
     }
 
     public Double div(Double val)  {
-        return toDouble() / val;
+        return doubleValue() / val.doubleValue();
+    }
+
+    public Double div(BookingOption<?> val)  {
+        return doubleValue() / val.doubleValue();
     }
 
     public Double power(Integer val) {
-        return Math.pow(toDouble(), val);
+        return Math.pow(doubleValue(), val.doubleValue());
     }
 
     public Double power(Double val) {
-        return Math.pow(toDouble(), val);
+        return Math.pow(doubleValue(), val.doubleValue());
     }
 
     public Double power(BigDecimal val) {
-        return Math.pow(toDouble(), val.doubleValue());
+        return Math.pow(doubleValue(), val.doubleValue());
+    }
+
+    public Double power(BookingOption<?> val) {
+        return Math.pow(doubleValue(), val.doubleValue());
     }
 
 

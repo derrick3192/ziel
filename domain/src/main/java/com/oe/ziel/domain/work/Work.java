@@ -3,8 +3,8 @@ package com.oe.ziel.domain.work;
 import org.joda.time.Duration;
 import org.joda.time.Instant;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Work {
 
@@ -14,7 +14,7 @@ public class Work {
     protected String name;
 
     /**
-     * The Standard Duration, that is how long it will take to complete the job with a speed factor of 1. (0.9 would mean a resource would only do 90% of the work in the same amount of time. 2.0 would be if a resource would complete twice the amount of work for the same amount of time.
+     * The Standard Duration, that is how long it will take to complete the work with a speed factor of 1. (0.9 would mean a resource would only do 90% of the work in the same amount of time. 2.0 would be if a resource would complete twice the amount of work for the same amount of time.
      */
     protected Duration duration;
 
@@ -24,26 +24,34 @@ public class Work {
     protected double cost = 1.0;
 
     /**
-     * The priority of the Job, that is if 2 jobs are of equal priority and can be done at the same time then the higher priority job should be done first.
+     * The priority of the Work, that is if 2 works are of equal priority and can be done at the same time then the higher priority works should be done first.
      */
     protected Integer priority = 0;
 
-
     /**
-     * Description of the job
+     * Description of the work
      */
     protected String description;
 
+    /**
+     * Latest tim eth work can be done
+     */
     protected Instant maxStartTime;
 
+    /**
+     * The Maximum finish time of the job
+     */
     protected Instant maxFinishTime;
 
-
     /**
-     * The required skills to complete the job.
+     * The required skills to complete the work.
      */
     private Map<String, Skill> requiredSkills = new HashMap<>();
 
+    /**
+     * Work which needs to be completed before this.
+     */
+    private List<Work> dependencies = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -137,6 +145,25 @@ public class Work {
         this.maxFinishTime = maxFinishTime;
     }
 
+    public List<Work> getDependencies() {
+        return dependencies;
+    }
 
+    public void setDependencies(List<Work> dependencies) {
+        this.dependencies = dependencies;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkSpec{" +
+                "name='" + name + '\'' +
+                ", amount=" + duration.getStandardHours() +
+                ", priority=" + priority +
+                ", description='" + description + '\'' +
+                ", maxStartTime=" + maxStartTime +
+                ", maxFinishTime=" + maxFinishTime +
+                ", dependencies=" + (dependencies.isEmpty() ? "NONE" : dependencies.stream().map(Work::getName).collect(Collectors.joining(","))) +
+        '}';
+    }
 
 }

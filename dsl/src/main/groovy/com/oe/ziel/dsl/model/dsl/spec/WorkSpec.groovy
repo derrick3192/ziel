@@ -23,7 +23,7 @@ class WorkSpec extends Work{
     Closure<Boolean> _if
 
     void dependsOn(WorkSpec work) {
-        WorkDependencyConstraint c = new WorkDependencyConstraint(null, null)
+        getDependencies().add(work)
     }
 
     void after(WorkSpec work) {
@@ -68,16 +68,4 @@ class WorkSpec extends Work{
         consumer.accept(this)
     }
 
-
-    @Override
-    public String toString() {
-        return "WorkSpec{" +
-            "name='" + name + '\'' +
-            ", amount=" + duration.getStandardHours() +
-            ", priority=" + priority +
-            ", description='" + description + '\'' +
-            ", maxStartTime=" + maxStartTime +
-            ", maxFinishTime=" + maxFinishTime +
-            '}';
-    }
 }

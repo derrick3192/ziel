@@ -27,7 +27,7 @@ public class BoolOption extends BookingOption<Boolean> {
     }
 
     @Override
-    public Double toDouble() {
+    public Double doubleValue() {
         return selected ? 1.0 : 0.0;
     }
 }

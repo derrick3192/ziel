@@ -38,7 +38,7 @@ class BuildHouseSpec extends Specification {
         }
 
 
-        def noFlooring = intOption {
+        def noFloors = intOption {
             label = "Number of floors"
             id = "noFloors"
             min = 1
@@ -49,7 +49,7 @@ class BuildHouseSpec extends Specification {
 
         def noBathrooms = intOption {
             label = "Number of floors"
-            id = "noFloors"
+            id = "noBathrooms"
             min = 1
             max = 3
             selected = 1
@@ -102,7 +102,7 @@ class BuildHouseSpec extends Specification {
         def plumbing = work {
             name = "plumbing"
             skill = "plumbing"
-            duration = noBathrooms / 3
+            duration = noBathrooms * noFloors
             dependsOn framing, roofing
         }
 
@@ -112,7 +112,10 @@ class BuildHouseSpec extends Specification {
     Booking mansionBooking = new Booking(
         createdAt: Instant.now(),
         customerInput: [
-            "m2" : 600
+            demolish : false,
+            m2 : 600,
+            noBathrooms : 3,
+            noFloors : 2
         ],
         customer: client
     )
