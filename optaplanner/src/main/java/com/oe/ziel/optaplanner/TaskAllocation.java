@@ -7,7 +7,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
 @PlanningEntity
-public class TaskAllocation extends com.oe.ziel.domain.work.TaskAllocation {
+public class TaskAllocation extends com.oe.ziel.domain.booking.solver.TaskAllocation {
 
     @PlanningVariable
     @Override

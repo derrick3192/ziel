@@ -8,6 +8,18 @@ import java.util.stream.Collectors;
 
 public class Work {
 
+    public Work(){}
+
+    public Work(List<Skill> requiredSkill, Integer duration) {
+        this.setDuration(duration);
+        requiredSkill.forEach(this::setSkill);
+    }
+
+    public Work(Skill requiredSkill, Integer duration) {
+        this.setSkill(requiredSkill);
+        this.setDuration(duration);
+    }
+
     /**
      * Help identify the name of the work.
      */

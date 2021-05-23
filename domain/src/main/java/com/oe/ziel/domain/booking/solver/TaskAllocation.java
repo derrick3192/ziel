@@ -4,14 +4,24 @@ import com.oe.ziel.domain.resource.Resource;
 import com.oe.ziel.domain.work.Work;
 import org.joda.time.Duration;
 import org.joda.time.Instant;
+import org.joda.time.Period;
 
 public class TaskAllocation {
 
-    private Instant startTime;
-    private Instant endTime;
-    private Resource resource;
-    private Work work;
-    private Duration duration;
+    protected Instant startTime;
+    protected Instant endTime;
+    protected Resource resource;
+    protected Work work;
+    protected Duration duration;
+
+    public TaskAllocation(){}
+
+    public TaskAllocation(Instant startTime, Instant endTime, Resource resource, Work work) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.resource = resource;
+        this.work = work;
+    }
 
     public Instant getStartTime() {
         return startTime;
@@ -52,4 +62,12 @@ public class TaskAllocation {
         return duration;
     }
 
+    public Duration overlappingDuration(TaskAllocation other) {
+        if (this == other) {
+            return getDuration();
+        }
+        Instant startMaximum = (startTime.compareTo(other.startTime) < 0) ? other.startTime : startTime;
+        Instant endMinimum = (endTime.compareTo(other.endTime) < 0) ? endTime : other.endTime;
+        return new Period(startMaximum, endMinimum).toStandardDuration();
+    }
 }

@@ -1,6 +1,7 @@
 package com.oe.ziel.domain.constraints;
 
-import com.oe.ziel.domain.work.TaskAllocation;
+
+import com.oe.ziel.domain.booking.solver.TaskAllocation;
 import org.joda.time.Minutes;
 
 public class WorkDependencyConstraint extends Constraint {

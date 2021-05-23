@@ -67,4 +67,9 @@ public class Resource {
     }
 
 
+    public boolean canWork(Work work) {
+        Set<String> requiredSkills = work.getRequiredSkills().keySet();
+        return requiredSkills.stream().allMatch(required -> skills.containsKey(required));
+    }
+
 }
