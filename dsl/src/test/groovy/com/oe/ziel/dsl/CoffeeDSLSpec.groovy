@@ -1,8 +1,6 @@
 package com.oe.ziel.dsl
 
 import com.oe.ziel.domain.booking.Booking
-import com.oe.ziel.domain.booking.options.IntOption
-import com.oe.ziel.domain.booking.options.OptionList
 import com.oe.ziel.domain.user.User
 import com.oe.ziel.dsl.model.Gantt
 import com.oe.ziel.dsl.model.dsl.spec.WorkSpec
@@ -30,7 +28,7 @@ class CoffeeDSLSpec extends Specification {
 
     Gantt coffeeGantt = Gantt.build {
 
-        OptionList coffeeSize = optionList {
+        def coffeeSize = optionList {
             id = "coffeeSize"
             label = "Coffee Size"
             description = "What size of coffee you would like"
@@ -40,7 +38,7 @@ class CoffeeDSLSpec extends Specification {
             required = true
         }
 
-        OptionList milk = optionList {
+        def milk = optionList {
             id = "milk"
             label = "Milk"
             description = "The kind of Milk you would like"
@@ -50,7 +48,7 @@ class CoffeeDSLSpec extends Specification {
         }
 
 
-        IntOption sugar = intOption {
+        def sugar = intOption {
             id = "sugar"
             label = "Sugars"
             description = "If you want the white tasty sugar in your drink or not"
@@ -60,7 +58,7 @@ class CoffeeDSLSpec extends Specification {
             min = 0
         }
 
-        IntOption extraShots = intOption {
+        def extraShots = intOption {
             id = "extraShots"
             label = "Extra Shots?"
             description = "If you would like any extra shots with your coffee?"
@@ -69,6 +67,8 @@ class CoffeeDSLSpec extends Specification {
             max = 2
             required = false
         }
+
+        // TODO - wrap in job {} so that we can access booking before defining work
 
         WorkSpec boilWater = work {
 
@@ -229,7 +229,7 @@ class CoffeeDSLSpec extends Specification {
         when:
             coffeeGantt.accept(booking)
         then:
-        coffeeGantt.works.find { it.name == "Froth Milk" }.duration == Duration.standardHours(8)
+            coffeeGantt.works.find { it.name == "Froth Milk" }.duration == Duration.standardHours(8)
     }
 
 }
