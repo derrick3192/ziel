@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/legacy-planning-domain" />
             <option value="$PROJECT_DIR$/legacy-solver-oscar" />
             <option value="$PROJECT_DIR$/optaplanner" />
+            <option value="$PROJECT_DIR$/scheduler-legacy" />
             <option value="$PROJECT_DIR$/scheduler-oscar" />
           </set>
         </option>

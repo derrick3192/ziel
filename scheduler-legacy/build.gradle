@@ -1,0 +1,30 @@
+
+plugins {
+    id 'groovy'
+    id 'java-library'
+}
+
+dependencies {
+
+    implementation project(":domain")
+    implementation project(":legacy-solver-oscar")
+    implementation project(":dsl")
+
+    implementation 'org.codehaus.groovy:groovy-all'
+    implementation 'space.jasan:groovy-closure-support:0.4.0'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+
+    testImplementation("junit:junit:4.13")
+    testImplementation 'org.spockframework:spock-core:2.0-M5-groovy-3.0'
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.1")
+}
+
+repositories {
+    jcenter()
+}
+
+test {
+    useJUnitPlatform()
+}

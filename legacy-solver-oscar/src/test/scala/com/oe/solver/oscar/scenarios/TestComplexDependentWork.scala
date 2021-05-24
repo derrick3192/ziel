@@ -5,6 +5,8 @@ import com.oe.ziel.domain.solver.SolverConfiguration
 import com.oe.ziel.domain.{Resource, Work}
 import org.junit.jupiter.api.Test
 
+import scala.collection.mutable.ListBuffer
+
 @Test
 class TestComplexDependentWork extends AbstractBaseSolverTest {
 
@@ -21,7 +23,7 @@ class TestComplexDependentWork extends AbstractBaseSolverTest {
 
       val workA = Work(amount = workAmountA, requiredSkills = List(SKILL_A))
       val workB = Work(amount = workAmountB, requiredSkills = List(SKILL_B))
-      val workC = Work(amount = workAmountC, requiredSkills = List(SKILL_C), dependencies = List(workA, workB))
+      val workC = Work(amount = workAmountC, requiredSkills = List(SKILL_C), dependencies = ListBuffer(workA, workB))
 
       val resources = List(resourceA, resourceB)
       val works = List(workA, workB, workC)

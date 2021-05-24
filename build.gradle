@@ -19,6 +19,12 @@ subprojects {
         mavenLocal()
         mavenCentral()
         jcenter()
+
+        maven {
+            //url "http://artifactory.info.ucl.ac.be/artifactory/libs-release" // The Artifactory (preferably virtual) repository to resolve from
+            url "http://artifactory.info.ucl.ac.be/artifactory/libs-snapshot" // The Artifactory (preferably virtual) repository to resolve from
+        }
+
     }
 
     test {

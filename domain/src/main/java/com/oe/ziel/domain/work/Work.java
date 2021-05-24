@@ -204,4 +204,16 @@ public class Work {
         '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Work work = (Work) o;
+        return Double.compare(work.cost, cost) == 0 && Objects.equals(name, work.name) && Objects.equals(duration, work.duration) && Objects.equals(priority, work.priority) && Objects.equals(description, work.description) && Objects.equals(maxStartTime, work.maxStartTime) && Objects.equals(maxFinishTime, work.maxFinishTime) && Objects.equals(minStartTime, work.minStartTime) && Objects.equals(minFinishTime, work.minFinishTime) && Objects.equals(requiredSkills, work.requiredSkills) && Objects.equals(dependencies, work.dependencies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, duration, cost, priority, description, maxStartTime, maxFinishTime, minStartTime, minFinishTime, requiredSkills, dependencies);
+    }
 }

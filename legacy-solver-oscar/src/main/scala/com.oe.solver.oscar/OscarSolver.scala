@@ -5,6 +5,7 @@ import com.oe.ziel.domain.solver.{Solver, SolverConfiguration}
 import com.oe.ziel.domain.{Resource, TaskAllocation, Work}
 import oscar.cp._
 
+import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 import scala.util.Random
 
 //
@@ -14,6 +15,8 @@ class OscarSolver(
                    val works:List[Work],
                    val solverConfiguration: SolverConfiguration) extends CPModel with Solver {
 
+
+  //def apply(resources: java.util.List[Resource], works: java.util.List[Work], solverConfiguration: SolverConfiguration): OscarSolver = new OscarSolver(resources.asScala.toList, works.asScala.toList, solverConfiguration)
 
   /** Standard members */
 

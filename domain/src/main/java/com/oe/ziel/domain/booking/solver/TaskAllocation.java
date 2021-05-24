@@ -11,12 +11,12 @@ public class TaskAllocation {
     protected Instant startTime;
     protected Instant endTime;
     protected Resource resource;
-    protected Work work;
+    protected String work;
     protected Duration duration;
 
     public TaskAllocation(){}
 
-    public TaskAllocation(Instant startTime, Instant endTime, Resource resource, Work work) {
+    public TaskAllocation(Instant startTime, Instant endTime, Resource resource, String work) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.resource = resource;
@@ -47,11 +47,11 @@ public class TaskAllocation {
         this.resource = resource;
     }
 
-    public Work getWork() {
+    public String getWork() {
         return work;
     }
 
-    public void setWork(Work work) {
+    public void setWork(String work) {
         this.work = work;
     }
 

@@ -9,3 +9,5 @@ include "scheduler-oscar"
 
 include "legacy-planning-domain"
 include "legacy-solver-oscar"
+
+include "scheduler-legacy"

@@ -2,6 +2,8 @@ package com.oe.ziel.domain
 
 import org.joda.time.{Duration, Instant}
 
+import scala.collection.mutable.ListBuffer
+
 case class WorkPriority(priority: Int)
 //case class WorkType(workType : String)
 //case class WorkAmount(workAmount : Int) extends AnyVal
@@ -43,7 +45,7 @@ case class Work(
                  // max duration
                  maxDuration:Option[Duration] = None,
 
-                 dependencies:List[Work] = List()
+                 dependencies:ListBuffer[Work] = ListBuffer()
 
                ) {
   def display = {

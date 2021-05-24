@@ -16,18 +16,9 @@ plugins {
     id 'java'
 }
 
-repositories {
-    mavenCentral()
-
-    maven {
-        //url "http://artifactory.info.ucl.ac.be/artifactory/libs-release" // The Artifactory (preferably virtual) repository to resolve from
-        url "http://artifactory.info.ucl.ac.be/artifactory/libs-snapshot" // The Artifactory (preferably virtual) repository to resolve from
-    }
-
-}
-
 dependencies {
 
+    compile project(':domain')
     compile project(':legacy-planning-domain')
 
     compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.10'

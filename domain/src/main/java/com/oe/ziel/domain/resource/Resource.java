@@ -4,8 +4,14 @@ import com.oe.ziel.domain.work.Skill;
 import com.oe.ziel.domain.work.Work;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Resource {
+
+
+    public Resource(String... skills) {
+        this(Arrays.stream(skills).map(Skill::new).collect(Collectors.toList()));
+    }
 
     public Resource(Collection<Skill> skills) {
         for (Skill skill : skills) {
