@@ -167,7 +167,7 @@ class LegacySchedulerTest extends Specification {
     }
 
 
-    def "testBuildingWithAlloation" () {
+    def "testBuildingWithAllocation" () {
         given:
             def startDate = new DateTime(2018, 5, 5, 0, 0, 0, 0)
             def start = startDate.toInstant()
@@ -187,11 +187,9 @@ class LegacySchedulerTest extends Specification {
             List<? extends Work> works = buildingGantt.getWorks()
             LegacyScheduler legacyScheduler = new LegacyScheduler(start, end);
 
-
             List<TaskAllocation> quickBuild =  new ArrayList<TaskAllocation>(legacyScheduler.schedule(largeWorkForce, works))
             List<TaskAllocation> slowBuild = new ArrayList<TaskAllocation>(legacyScheduler.schedule(smallWorkForce, works))
 
-            println("\n\n")
             def quicker = printSolution(quickBuild)
             def slower = printSolution(slowBuild)
         then:
