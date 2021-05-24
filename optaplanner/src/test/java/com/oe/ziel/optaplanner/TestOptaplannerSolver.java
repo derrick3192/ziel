@@ -14,7 +14,6 @@ import java.util.Arrays;
 /**
  * TODO - work on optaplanner solver still on-going
  */
-@Ignore
 public class TestOptaplannerSolver {
 
     final Skill SKILL_A = new Skill("A");
@@ -28,7 +27,7 @@ public class TestOptaplannerSolver {
     private Resource resourceBC = new Resource(SKILL_B, SKILL_C);
 
 
-    @Test
+    @Ignore
     public void testOptaPlanner() {
         OptaplannerSolver solver = new OptaplannerSolver();
 
