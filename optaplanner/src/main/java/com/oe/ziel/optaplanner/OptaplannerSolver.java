@@ -19,7 +19,7 @@ public class OptaplannerSolver {
         SolverConfig solverConfig = new SolverConfig();
 
         ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
-        //scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(PlanningEasyScoreCalculator.class);
+        scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(PlanningEasyScoreCalculator.class);
         scoreDirectorFactoryConfig.setConstraintProviderClass(ZielConstraintProvider.class);
 
         //scoreDirectorFactoryConfig.setIncrementalScoreCalculatorClass(findImplementingClass(IncrementalScoreCalculator.class));

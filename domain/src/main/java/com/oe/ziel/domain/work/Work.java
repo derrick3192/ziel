@@ -46,7 +46,7 @@ public class Work {
     protected String description;
 
     /**
-     * Latest tim eth work can be done
+     * Latest time the work can be done
      */
     protected Instant maxStartTime;
 
@@ -54,6 +54,16 @@ public class Work {
      * The Maximum finish time of the job
      */
     protected Instant maxFinishTime;
+
+    /**
+     * The earliest time the work can be started
+     */
+    protected Instant minStartTime;
+
+    /**
+     *  The earliest time the work can be finished
+     */
+    protected Instant minFinishTime;
 
     /**
      * The required skills to complete the work.
@@ -147,6 +157,22 @@ public class Work {
 
     public void setMaxStartTime(Instant maxStartTime) {
         this.maxStartTime = maxStartTime;
+    }
+
+    public Instant getMinStartTime() {
+        return minStartTime;
+    }
+
+    public void setMinStartTime(Instant minStartTime) {
+        this.minStartTime = minStartTime;
+    }
+
+    public Instant getMinFinishTime() {
+        return minFinishTime;
+    }
+
+    public void setMinFinishTime(Instant minFinishTime) {
+        this.minFinishTime = minFinishTime;
     }
 
     public Instant getMaxFinishTime() {
