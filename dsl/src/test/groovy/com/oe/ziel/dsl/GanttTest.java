@@ -4,7 +4,7 @@ import com.oe.ziel.dsl.export.GanttPrinter;
 import com.oe.ziel.dsl.export.YumlGanttPrinter;
 import com.oe.ziel.dsl.model.Gantt;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.oe.ziel.dsl.model.dsl.GanttKeywords.*;
 

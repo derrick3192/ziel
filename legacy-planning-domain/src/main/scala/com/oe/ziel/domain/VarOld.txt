@@ -1,0 +1,63 @@
+package com.oe.ziel.domain
+
+
+sealed trait Var[T] {
+  def name:String
+  def withLowerBound(lowerBound : T) : Var[T] with VariableWithLowerBound[T]
+  def withUpperBound(lowerBound : T) : Var[T] with VariableWithUpperBound[T]
+}
+
+sealed trait VariableWithLowerBound[T] extends Var[T] {
+  def lowerBound : T
+}
+
+sealed trait VariableWithUpperBound[T] extends Var[T] {
+  def upperBound : T
+}
+
+case object Var {
+
+  case class VarUnbound[T](val name: String) extends Var[T] {
+    override def withLowerBound(lowerBound: T): VarWithLowerBound[T] = VarWithLowerBound(this.name, lowerBound)
+    override def withUpperBound(upperBound: T): VarWithUpperBound[T] = VarWithUpperBound(this.name, upperBound)
+  }
+
+  case class VarWithLowerBound[T](val name: String, val lowerBound: T) extends Var[T] with VariableWithLowerBound[T] {
+    override def withLowerBound(lowerBound: T): VarWithLowerBound[T] = ???
+    override def withUpperBound(upperBound: T): VarBounded[T] = ???
+  }
+
+  case class VarWithUpperBound[T](val name: String, val upperBound: T) extends Var[T] with VariableWithUpperBound[T] {
+    override def withLowerBound(lowerBound: T): VarBounded[T] = ???
+    override def withUpperBound(upperBound: T): VarWithUpperBound[T] = ???
+  }
+
+  case class VarBounded[T](override val name : String, override val lowerBound : T, override val upperBound: T)
+    extends Var[T]
+      with VariableWithLowerBound[T]
+      with VariableWithUpperBound[T] {
+    override def withLowerBound(lowerBound : T): VarBounded[T] = this.copy(lowerBound = lowerBound)
+    override def withUpperBound(upperBound : T): VarBounded[T] = this.copy(upperBound = upperBound)
+  }
+}
+
+
+object VarTest {
+
+  import com.oe.ziel.domain.Var.{VarBounded, VarUnbound, VarWithLowerBound, VarWithUpperBound}
+
+  def varMatch[T](variable : Var[T]): Unit = {
+    variable match {
+      case VarUnbound(name) => println(s"inf < $name < inf")
+      case VarWithLowerBound(name, lowerBound) => println(s"$lowerBound < $name < inf")
+      case VarWithUpperBound(name, upperBound) => println(s"inf < $name < $upperBound")
+      case VarBounded(name, lowerBound, upperBound) => println(s"$lowerBound < $name < $upperBound")
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    println("hello world")
+    val variable : Var[Double] = VarBounded("yellow", 22.0, 33.0)
+    varMatch(variable)
+  }
+}

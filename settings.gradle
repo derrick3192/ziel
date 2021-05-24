@@ -6,3 +6,6 @@ include "api-builder"
 include "optaplanner"
 include "dsl"
 include "scheduler-oscar"
+
+include "legacy-planning-domain"
+include "legacy-solver-oscar"

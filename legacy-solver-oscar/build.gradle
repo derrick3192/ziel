@@ -1,0 +1,52 @@
+
+
+// lets look into https://www.minizinc.org/doc-2.3.2/en/index.html minizinc as well
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
+    }
+}
+
+plugins {
+    id 'scala'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        //url "http://artifactory.info.ucl.ac.be/artifactory/libs-release" // The Artifactory (preferably virtual) repository to resolve from
+        url "http://artifactory.info.ucl.ac.be/artifactory/libs-snapshot" // The Artifactory (preferably virtual) repository to resolve from
+    }
+
+}
+
+dependencies {
+
+    compile project(':legacy-planning-domain')
+
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.10'
+    compile group: 'org.typelevel', name: 'squants_2.12', version: '1.5.0'
+
+//    compile 'oscar:oscar_2.12:4.0.0'
+//    compile 'oscar:oscar-cp_2.12:4.0.0'
+
+    compile 'oscar:oscar_2.12:4.1.0-SNAPSHOT'
+    compile 'oscar:oscar-cp_2.12:4.1.0-SNAPSHOT'
+}
+
+task run(type: JavaExec, dependsOn: classes) {
+    main = 'Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+apply plugin: "com.jfrog.artifactory"
+
+
+// compile 'oscar:oscar_2.12:4.1.0-SNAPSHOT'

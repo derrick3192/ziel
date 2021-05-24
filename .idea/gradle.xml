@@ -14,7 +14,10 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/dsl" />
             <option value="$PROJECT_DIR$/dsldeprecated" />
+            <option value="$PROJECT_DIR$/legacy-planning-domain" />
+            <option value="$PROJECT_DIR$/legacy-solver-oscar" />
             <option value="$PROJECT_DIR$/optaplanner" />
+            <option value="$PROJECT_DIR$/scheduler-oscar" />
           </set>
         </option>
       </GradleProjectSettings>

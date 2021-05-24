@@ -32,6 +32,7 @@ subprojects {
         implementation 'joda-time:joda-time:2.10.7'
         testImplementation 'org.testng:testng:7.0.0'
 
+        testImplementation ('org.assertj:assertj-core:3.15.0')
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
@@ -40,6 +41,7 @@ subprojects {
             // DECLARE DEPENDENCIES HERE
             implementation 'joda-time:joda-time:2.10.7'
             implementation 'org.codehaus.groovy:groovy-all:3.0.0'
+
             implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.3'
             implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
         }

@@ -1,0 +1,53 @@
+package com.oe.ziel.domain
+
+import org.joda.time.{Duration, Instant}
+import squants.{Quantity, Time}
+
+
+
+object UnitOfMeasureType {
+  case object Velcity
+}
+
+
+
+
+
+
+class OrderedInstant(val instant: Instant) extends Ordered[Instant] {
+  override def compare(that: Instant): Int = instant.compareTo(that)
+}
+
+//abstract class Variable[TYPE, VALUE <: Ordered[TYPE]](val name:String, val value:VALUE, val guid:String) {
+//
+//}
+
+abstract class Variable[VALUE](val name:String, val value:Ordered[VALUE], val guid:String) {
+
+}
+
+case class VariableOfInt(override val name:String, val int:Int, override val guid:String)
+  extends Variable[Int] (name, int, guid)
+
+//case class VariableOfInstant(override val name:String, val instant:Instant, override val guid:String)
+//  extends Variable[Instant] (name, new OrderedInstant(instant), guid)
+
+
+
+object VariableOfInstant {
+  implicit val orderedInstantConvert = (instant:Instant) => new OrderedInstant(instant)
+
+  case class VariableOfInstant(override val name:String, val instant:Instant, override val guid:String)
+    extends Variable[Instant] (name, instant, guid)
+
+  def apply(name: String, instant: Instant, guid: String): VariableOfInstant = new VariableOfInstant(name, instant, guid)
+
+}
+
+
+object App {
+  def main(args: Array[String]): Unit = {
+    println(VariableOfInstant("test", new Instant(), "guid"))
+    println(VariableOfInt("test", 33, "guid"))
+  }
+}

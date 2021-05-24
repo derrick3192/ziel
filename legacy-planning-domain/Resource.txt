@@ -1,0 +1,34 @@
+package com.oe.ziel.domain
+
+
+/**
+ * Skill level represents he level of a ability a resource has to do a task for a given Skill. A resource must meet the skill requirements of the task in order to be assigned to it.
+ * @param major resources which do not have this level can never be scheduled to do this task
+ * @param minor a resource may still do a task, even if its minor level is not sufficient, subject to a penalty
+ * @param patch patch is disregarded but can be used for documenting changes which have no effect
+ */
+case class SkillLevel(val major: Int, val minor: Int, val patch: Int)
+
+
+/**
+ * Skills are identified by their code. This is simply a raw string, however we recommend the following format: {organisation}.{businessunit}.{task}, or follow some other convention which makes sense to your business.
+ * @param code unique identifier for a skill
+ */
+case class SkillCode(val code: String)
+
+/**
+ * Tasks may require skills in order to be completed.
+ * @param skillCode the SkillCode must match the task
+ * @param level the level which the resource is at in regards to this skill
+ * @param efficiency how well the resource performs this skill
+ */
+class Skill(val skillCode:String, val level:SkillLevel, val efficiency:Double)
+
+
+
+/**
+ * Represents a resource. Resources are the assets of an organisation, they are able to do perform the tasks, so long as they have the required skills
+ */
+class Resource(val id:String, val skills: Map[SkillCode, Skill]) {
+
+}

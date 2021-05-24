@@ -1,0 +1,31 @@
+package com.oe.ziel.domain
+
+import org.joda.time.{DateTime, Instant, Interval, Period}
+
+import scala.concurrent.duration.Duration
+
+/**
+ * Represents a decision that the platform should make for you
+ * @tparam T
+ */
+sealed trait Decision[T] {
+  val value: T = ???
+}
+
+/** Decisions pertaining to time */
+
+class DecisionInstance extends Decision[Instant]
+class DecisionDateTime extends Decision[DateTime]
+class DecisionInterval extends Decision[Interval]
+
+class DecisionPeriod extends Decision[Period]
+class DecisionDuration extends Decision[Duration]
+
+
+/** Decisions pertaining to fundamental data types TODO - should these be ignored? */
+
+class DecisionString extends Decision[String] {}
+class DecisionInt extends Decision[Int]
+class DecisionLong extends Decision[Long]
+class DecisionDouble extends Decision[Double]
+class DecisionBoolean extends Decision[Boolean]

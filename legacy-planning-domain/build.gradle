@@ -1,0 +1,19 @@
+
+
+// lets look into https://www.minizinc.org/doc-2.3.2/en/index.html minizinc as well
+
+plugins {
+    id 'scala'
+    id 'java'
+}
+
+dependencies {
+
+    implementation group: 'com.softwaremill.macwire', name: 'macros_2.12', version: '2.3.3'
+    implementation group: 'org.scala-lang', name: 'scala-library', version: '2.12.10'
+    implementation group: 'org.typelevel', name: 'squants_2.12', version: '1.5.0'
+}
+
+test {
+    maxParallelForks = 1
+}
