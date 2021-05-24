@@ -21,7 +21,8 @@ class OscarSolverJava(val minStartTime : Instant, val maxFinishTime : Instant) {
     val resourcesMap = resourcesJava.asScala.map(
       r => r -> new com.oe.ziel.domain.Resource(
         r.getSkills.asScala.map(e => (SkillCode(e._1) -> Skill(e._1))).toMap,
-        Set()
+        Set(),
+        r.getName
       )
     ).toMap
     val resourcesInverted = (Map() ++ resourcesMap.map(_.swap))

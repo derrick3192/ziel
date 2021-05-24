@@ -27,39 +27,39 @@ public abstract class ZielConstraintProvider implements ConstraintProvider {
     abstract int durationToScore(Duration duration);
 
 
-    @Override
-    public Constraint[] defineConstraints(ConstraintFactory factory) {
-        return new Constraint[] {
-                resourceConflict(factory),
-                skillRequirement(factory),
-                priorityRequirement(factory)
-        };
-    }
+//    @Override
+//    public Constraint[] defineConstraints(ConstraintFactory factory) {
+//        return new Constraint[] {
+//                resourceConflict(factory),
+//                skillRequirement(factory),
+//                priorityRequirement(factory)
+//        };
+//    }
 
-    private Constraint priorityRequirement(ConstraintFactory factory) {
-        return factory.fromUniquePair(TaskAllocation.class)
-                .filter((a1, a2) -> a1.getWork().getPriority() != a2.getWork().getPriority())
-                .penalizeConfigurable(ResourceConstraintConfiguration.PRIORITY_ORDER, (a1, a2) -> {
-                    TaskAllocation first = a1.getWork().getPriority() > a2.getWork().getPriority() ? a1 : a2;
-                    TaskAllocation last  = a1.getWork().getPriority() < a2.getWork().getPriority() ? a1 : a2;
-                    Duration lead = new Duration(first.getEndTime(), last.getEndTime());
-                    return lead.getMillis() < 0 ? durationToScore(lead.abs()) : 0;
-                });
-    }
-
-    private Constraint resourceConflict(ConstraintFactory factory) {
-        return factory.fromUniquePair(TaskAllocation.class,
-                overlapping(TaskAllocation::getStartTime, TaskAllocation::getEndTime))
-                .ifExists(Resource.class,
-                        filtering((allocation1, allocation2, resource) -> allocation1.getResource() == resource && allocation2.getResource() == resource))
-                .penalizeConfigurable(ResourceConstraintConfiguration.RESOURCE_CONFLICT, (allocation1, allocation2) -> durationToScore(allocation1.overlappingDuration(allocation2))); // TODO configurable penalization function
-    }
-
-    private Constraint skillRequirement(ConstraintFactory factory) {
-        return factory.from(TaskAllocation.class)
-                .filter(allocation -> allocation.getWork().getRequiredSkills().size() > 0)
-                .penalizeConfigurable(ResourceConstraintConfiguration.REQUIRED_SKILL, allocation -> allocation.getResource().skillDifference(allocation.getWork()));
-    }
+//    private Constraint priorityRequirement(ConstraintFactory factory) {
+//        return factory.fromUniquePair(TaskAllocation.class)
+//                .filter((a1, a2) -> a1.getWork().getPriority() != a2.getWork().getPriority())
+//                .penalizeConfigurable(ResourceConstraintConfiguration.PRIORITY_ORDER, (a1, a2) -> {
+//                    TaskAllocation first = a1.getWork().getPriority() > a2.getWork().getPriority() ? a1 : a2;
+//                    TaskAllocation last  = a1.getWork().getPriority() < a2.getWork().getPriority() ? a1 : a2;
+//                    Duration lead = new Duration(first.getEndTime(), last.getEndTime());
+//                    return lead.getMillis() < 0 ? durationToScore(lead.abs()) : 0;
+//                });
+//    }
+//
+//    private Constraint resourceConflict(ConstraintFactory factory) {
+//        return factory.fromUniquePair(TaskAllocation.class,
+//                overlapping(TaskAllocation::getStartTime, TaskAllocation::getEndTime))
+//                .ifExists(Resource.class,
+//                        filtering((allocation1, allocation2, resource) -> allocation1.getResource() == resource && allocation2.getResource() == resource))
+//                .penalizeConfigurable(ResourceConstraintConfiguration.RESOURCE_CONFLICT, (allocation1, allocation2) -> durationToScore(allocation1.overlappingDuration(allocation2))); // TODO configurable penalization function
+//    }
+//
+//    private Constraint skillRequirement(ConstraintFactory factory) {
+//        return factory.from(TaskAllocation.class)
+//                .filter(allocation -> allocation.getWork().getRequiredSkills().size() > 0)
+//                .penalizeConfigurable(ResourceConstraintConfiguration.REQUIRED_SKILL, allocation -> allocation.getResource().skillDifference(allocation.getWork()));
+//    }
 
 
 }

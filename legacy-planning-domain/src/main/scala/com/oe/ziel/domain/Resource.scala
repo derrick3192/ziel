@@ -8,7 +8,7 @@ case class Tag(tag : String) extends AnyVal
  * Represents a resource. Resources are the assets of an organisation, they are able to do perform the tasks, so long as they have the required skills
  * @param skills the skill the resource has to do the job
  */
-case class Resource(skills: Map[SkillCode, Skill], tags: Set[Tag]) {
+case class Resource(skills: Map[SkillCode, Skill], tags: Set[Tag], name: String) {
 
   def mySkillLevel(skill : Skill): Option[Skill] = skills.get(skill.skillCode)
   def hasSufficientSkill(skill : Skill): Boolean = mySkillLevel(skill) forall( resourceSkill => resourceSkill.isProficientTo(skill))
@@ -34,7 +34,7 @@ case class Resource(skills: Map[SkillCode, Skill], tags: Set[Tag]) {
 
 case object Resource {
   def apply(skills: Iterable[Skill] = List(), tags: Set[Tag] = Set()):Resource = {
-    Resource(skills = skills map (skill => skill.skillCode -> skill) toMap, tags)
+    Resource(skills = skills map (skill => skill.skillCode -> skill) toMap, tags, "test")
   }
 }
 

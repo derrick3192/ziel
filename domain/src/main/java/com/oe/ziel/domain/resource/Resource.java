@@ -8,6 +8,12 @@ import java.util.stream.Collectors;
 
 public class Resource {
 
+    // TODO - this is unique as a Resource is a case class in scala which causes problems in conversions resources who are identical come back the same
+    private String name = UUID.randomUUID().toString();
+
+    private Set<String> tags = new HashSet<>();
+    private Map<String, Skill> skills = new HashMap<>();
+
 
     public Resource(String... skills) {
         this(Arrays.stream(skills).map(Skill::new).collect(Collectors.toList()));
@@ -23,10 +29,6 @@ public class Resource {
             this.skills.put(skill.getSkillCode(), skill);
         }
     }
-
-
-    private Set<String> tags = new HashSet<>();
-    private Map<String, Skill> skills = new HashMap<>();
 
     public Set<String> getTags() {
         return tags;
@@ -78,4 +80,16 @@ public class Resource {
         return requiredSkills.stream().allMatch(required -> skills.containsKey(required));
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Resource{\"skills=" + skills.keySet().stream().map(String::valueOf).collect(Collectors.joining(",")) +'}';
+    }
 }

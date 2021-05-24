@@ -70,4 +70,15 @@ public class TaskAllocation {
         Instant endMinimum = (endTime.compareTo(other.endTime) < 0) ? endTime : other.endTime;
         return new Period(startMaximum, endMinimum).toStandardDuration();
     }
+
+    @Override
+    public String toString() {
+        return "TaskAllocation{" +
+                "startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", resource=" + resource +
+                ", work='" + work + '\'' +
+                ", duration=" + getDuration().toStandardHours() +
+                "} \n";
+    }
 }

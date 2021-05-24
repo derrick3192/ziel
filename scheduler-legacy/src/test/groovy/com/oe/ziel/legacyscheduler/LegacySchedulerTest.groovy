@@ -2,12 +2,15 @@ package com.oe.ziel.legacyscheduler
 
 import com.oe.ziel.LegacyScheduler
 import com.oe.ziel.domain.booking.Booking
+import com.oe.ziel.domain.booking.solver.TaskAllocation
 import com.oe.ziel.domain.resource.Resource
 import com.oe.ziel.domain.user.User
 import com.oe.ziel.domain.work.Work
 import com.oe.ziel.dsl.model.Gantt
-import org.joda.time.Instant
+import org.joda.time.DateTime
+import org.joda.time.Duration
 import spock.lang.Specification
+
 
 
 class LegacySchedulerTest extends Specification {
@@ -95,7 +98,14 @@ class LegacySchedulerTest extends Specification {
         def framing = work {
             name = "Framing"
             skill = "labourer"
-            duration = 1
+            duration = sqrMeters / 5.0
+            dependsOn concreting
+        }
+
+        def landscaping = work {
+            name = "Landscaping"
+            skill = "labourer"
+            duration = sqrMeters / 10.0
             dependsOn concreting
         }
 
@@ -116,24 +126,54 @@ class LegacySchedulerTest extends Specification {
         }
 
     }
-    
+
     /**
      * RESOURCES
      */
     def demolisher = new Resource("demolisher")
     def labourer1 = new Resource("labourer")
     def labourer2 = new Resource("labourer")
+    def labourer3 = new Resource("labourer")
     def plumbing = new Resource("plumber")
 
-    List<Resource> resources = Arrays.asList(demolisher, labourer1, labourer2, plumbing)
+    List<Resource> largeWorkForce = Arrays.asList(
+            demolisher,
+            labourer1,
+            labourer2,
+            labourer3,
+            plumbing
+    )
+
+    List<Resource> smallWorkForce = Arrays.asList(
+            demolisher,
+            labourer1,
+            plumbing
+    )
+
+    private Duration printSolution(List<TaskAllocation> solution) {
+        def startTime = solution.min {it.startTime}.startTime
+        def endTime = solution.max {it.endTime}.endTime
+        def totalDuration = new org.joda.time.Duration(startTime, endTime)
+
+        println("\n\n")
+        println "All allocations are as follows:"
+        println "Start time:"  + startTime
+        println "End time:"  + endTime
+        println "Duration:" + totalDuration.toStandardHours()
+        println "\n\n"
+        println solution.sort {a, b -> (a.getStartTime() <=> b.getStartTime()) }
+
+        return totalDuration
+    }
 
 
-    def "testing" () {
+    def "testBuildingWithAlloation" () {
         given:
-            def start = Instant.now()
-            def end = start + 1000000000
+            def startDate = new DateTime(2018, 5, 5, 0, 0, 0, 0)
+            def start = startDate.toInstant()
+            def end = startDate.plusDays(10).toInstant()
             Booking mansionBooking = new Booking(
-                    createdAt: Instant.now(),
+                    createdAt: start,
                     customerInput: [
                             demolish : false,
                             m2 : 600,
@@ -146,9 +186,18 @@ class LegacySchedulerTest extends Specification {
             buildingGantt.accept(mansionBooking)
             List<? extends Work> works = buildingGantt.getWorks()
             LegacyScheduler legacyScheduler = new LegacyScheduler(start, end);
-            println legacyScheduler.schedule(resources, works)
+
+
+            List<TaskAllocation> quickBuild =  new ArrayList<TaskAllocation>(legacyScheduler.schedule(largeWorkForce, works))
+            List<TaskAllocation> slowBuild = new ArrayList<TaskAllocation>(legacyScheduler.schedule(smallWorkForce, works))
+
+            println("\n\n")
+            def quicker = printSolution(quickBuild)
+            def slower = printSolution(slowBuild)
         then:
-            true
+            quicker.isShorterThan(slower)
     }
+
+
 
 }
