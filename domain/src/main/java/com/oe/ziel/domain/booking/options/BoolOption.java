@@ -2,18 +2,6 @@ package com.oe.ziel.domain.booking.options;
 
 public class BoolOption extends BookingOption<Boolean> {
 
-    protected String id;
-
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
-
     @Override
     public boolean isTooLarge() {
         if (max == null) return false;
@@ -30,4 +18,12 @@ public class BoolOption extends BookingOption<Boolean> {
     public Double doubleValue() {
         return selected ? 1.0 : 0.0;
     }
+
+    @Override
+    public String asSwaggerResource() {
+        return  "  " + id + ":"                  + "\n" +
+                "    type: \"boolean\""          + "\n" +
+                (this.description != null ? "    description: \"" + description + "\"" : "");
+    }
+
 }

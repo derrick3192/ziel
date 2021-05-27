@@ -14,7 +14,7 @@ dependencies {
 
 
     testImplementation("junit:junit:4.13")
-    testImplementation 'org.spockframework:spock-core:2.0-M5-groovy-3.0'
+
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.1")
 }
 

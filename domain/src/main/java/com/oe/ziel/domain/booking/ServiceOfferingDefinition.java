@@ -1,40 +1,31 @@
 package com.oe.ziel.domain.booking;
 
 import com.oe.ziel.domain.booking.options.BookingOption;
-import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult;
-import com.oe.ziel.domain.work.Gantt;
+import com.oe.ziel.domain.booking.options.validation.ValidationResult;
+import com.oe.ziel.domain.work.Work;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * A Service Offering Definition is a recipe to convert customer input into work which needs to be done by the organization.
  */
-public abstract class ServiceOfferingDefinition {
+public interface ServiceOfferingDefinition {
 
     /**
-     * The booking options available to the customer
-     * @return the booking options the customer can use
+     * Populate the context of the booking
+     * @param booking sets the booking context so we can construct the actual Gantt
      */
-    public abstract List<BookingOption<?>> bookingOptions();
+    void accept(Booking booking);
 
-    /**
-     * Perform validation on the booking options a customer has specified. It is enough to return only invalid results,
-     * as missing results on an option will be assumed to be valid.
-     * @param bookingOptions the option to validate
-     * @return the validation results for the given option
-     */
-    public List<BookingOptionValidationResult<?>> validate(List<BookingOption<?>> bookingOptions) {
-        return bookingOptions().stream().map(bi -> new BookingOptionValidationResult<>(bi, true, "valid")).collect(Collectors.toList());
-    }
+    public Booking getBooking();
 
-    /**
-     * This is the crux of a service offering. The gantt represents the work involved in to deliver the service, and the
-     * applicable constraints. Particular work might only be able to be performed by a resources with particular
-     * attributes, or the work might need to be performed in a given order.
-     * @param bookingOptions
-     * @return
-     */
-    public abstract Gantt gantt(List<BookingOption<?>> bookingOptions);
+    List<? extends Work> getWorks();
+
+    List<ValidationResult<?>> validations();
+
+    List<BookingOption> getBookingOptions();
+
+    String getName();
+
+    String getDescription();
 
 }

@@ -1,6 +1,7 @@
 package com.oe.ziel.domain.booking.options;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class OptionList extends BookingOption<String> {
@@ -42,4 +43,13 @@ public class OptionList extends BookingOption<String> {
                 ", required=" + required +
                 '}';
     }
+
+    @Override
+    public String asSwaggerResource() {
+        return  "  " + id + ":"                  + "\n" +
+                "    type: \"string\""          + "\n" +
+                "    enum: [" + String.join(",", options) + "]\n" +
+                (this.description != null ? "    description: \"" + description + "\"" : "");
+    }
+
 }

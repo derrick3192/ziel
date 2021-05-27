@@ -27,6 +27,11 @@ import java.util.function.Consumer
 @EqualsAndHashCode
 class DefaultGantt implements Gantt, GanttDefinition {
 
+
+    private String name;
+
+    private String description;
+
     private Booking booking
 
     private List<WorkSpec> workSpecs = new ArrayList<>();
@@ -162,5 +167,21 @@ class DefaultGantt implements Gantt, GanttDefinition {
     @Override
     public List<ValidationResult<?>> validations() {
         return validations;
+    }
+
+    String getDescription() {
+        return description
+    }
+
+    void setDescription(String description) {
+        this.description = description
+    }
+
+    String getName() {
+        return name
+    }
+
+    void setName(String name) {
+        this.name = name
     }
 }

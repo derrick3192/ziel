@@ -7,4 +7,12 @@ public class IntOption extends BookingOption<Integer> {
         return selected.doubleValue();
     }
 
+    @Override
+    public String asSwaggerResource() {
+        return  "  " + id + ":"                  + "\n" +
+                "    type: \"integer\""          + "\n" +
+                "    format: \"int32\""          + "\n" +
+                (this.description != null ? "    description: \"" + description + "\"" : "");
+    }
+
 }

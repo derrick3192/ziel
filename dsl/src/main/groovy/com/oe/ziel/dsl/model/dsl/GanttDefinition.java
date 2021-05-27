@@ -31,6 +31,10 @@ public interface GanttDefinition {
 
     Booking getBooking();
 
+    void setName(String name);
+
+    void setDescription(String description);
+
 
     default <B extends BookingOption> B buildOption(Closure cl, B bookingOption) {
         Consumer<Object> cl2 = ConsumerWithDelegate.create(cl);

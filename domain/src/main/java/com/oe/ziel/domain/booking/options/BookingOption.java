@@ -225,5 +225,9 @@ public abstract class BookingOption<VALUE extends Comparable<VALUE>> {
         return Math.pow(doubleValue(), val.doubleValue());
     }
 
+    public String asSwaggerResource() {
+        return id;
+    }
+
 
 }

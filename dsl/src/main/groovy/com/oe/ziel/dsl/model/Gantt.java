@@ -1,8 +1,7 @@
 package com.oe.ziel.dsl.model;
 
 import com.oe.ziel.domain.booking.Booking;
-import com.oe.ziel.domain.booking.options.BookingOption;
-import com.oe.ziel.domain.booking.options.validation.BookingOptionValidationResult;
+import com.oe.ziel.domain.booking.ServiceOfferingDefinition;
 import com.oe.ziel.domain.booking.options.validation.ValidationResult;
 import com.oe.ziel.domain.work.Work;
 import com.oe.ziel.dsl.model.dsl.GanttDefinition;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public interface Gantt {
+public interface Gantt extends ServiceOfferingDefinition {
 
 
     static Gantt create(Consumer<GanttDefinition> definition) {
@@ -31,16 +30,16 @@ public interface Gantt {
     Map<String, Object> getMetadata();
 
 
-    /**
-     * Populate the context of the booking
-     * @param booking sets the booking context so we can construct the actual Gantt
-     */
-    void accept(Booking booking);
-
-
-    public Booking getBooking();
-
-    List<? extends Work> getWorks();
-
-    List<ValidationResult<?>> validations();
+//    /**
+//     * Populate the context of the booking
+//     * @param booking sets the booking context so we can construct the actual Gantt
+//     */
+//    void accept(Booking booking);
+//
+//
+//    public Booking getBooking();
+//
+//    List<? extends Work> getWorks();
+//
+//    List<ValidationResult<?>> validations();
 }
