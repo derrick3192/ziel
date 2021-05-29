@@ -62,6 +62,67 @@ tags:
 schemes:
 - "https"
 paths:
+
+  /book:
+    post:
+      tags:
+      - "service offerings"
+      summary: "Make a booking for ${so.getName()}"
+      description: "${so.getDescription()}"
+      operationId: "createBooking"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "order specificiation for the booking"
+        required: true
+        schema:
+          \$ref: "#/definitions/${findResourceName(so.getName())}"
+      responses:
+        "200":
+          description: "Booking accepted"
+        "201":
+          description: "Booking created"
+        "422":
+          description: "Error in booking"          
+
+  /book/{id}:
+    put:
+      tags:
+      - "service offerings"
+      summary: "Make a booking for ${so.getName()}"
+      description: "${so.getDescription()}"
+      operationId: "updateBooking"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "the identity of the booking"
+        required : true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "order specificiation for the booking"
+        required: true
+        schema:
+          \$ref: "#/definitions/${findResourceName(so.getName())}"
+      responses:
+        "200":
+          description: "Booking accepted"
+        "201":
+          description: "Booking created"
+        "422":
+          description: "Error in booking"          
+
+
+
+
 \n"""
         )
 
